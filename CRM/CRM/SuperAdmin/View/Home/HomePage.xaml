@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"  
+             x:Class="CRM.SuperAdmin.View.Home.HomePage"
+             Title="Home"
+             BackgroundColor="#FAFAFA">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="lbl_header" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "28" Tablet = "35" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{StaticResource admin_gray_color}" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="blue_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="End" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "32" Tablet = "45" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#fff" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="gray_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Start" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "18" Tablet = "22" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#fff" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="view_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="End" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "15" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#fff" />
+            </Style>
+
+            <Style x:Key="imag_style" TargetType="Image">
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="Margin">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="Thickness" Phone = "9" Tablet = "8" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="HeightRequest" Value="15"/>
+                <Setter Property="WidthRequest" Value="15"/>
+            </Style>
+
+            <Style x:Key="green_label" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#0CB1C7" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <StackLayout Padding="15">
+                <Label Text="WELCOME SUPER ADMIN" Style="{StaticResource lbl_header}"/>
+
+                <Grid BackgroundColor="#33becf" Margin="25,10" Padding="0,15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="55*"/>
+                        <RowDefinition Height="45*"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="{Binding HomeData.TotalLead}" Style="{StaticResource blue_text_style}"/>
+                    <Label Grid.Row="1" Text="TOTAL LEADS" Style="{StaticResource gray_text_style}"/>
+                </Grid>
+
+                <Grid BackgroundColor="#ff5c61" Margin="25,10" Padding="0,15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="55*"/>
+                        <RowDefinition Height="45*"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="{Binding HomeData.UserCount}" Style="{StaticResource blue_text_style}"/>
+                    <Label Grid.Row="1" Text="TOTAL ADMINS/CUSTOMERS" Style="{StaticResource gray_text_style}"/>
+                </Grid>
+
+                <Frame Padding="40,0,30,0" BackgroundColor="#fff" TranslationY="-30" HorizontalOptions="CenterAndExpand">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LeadsCalledCommand}" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="VIEW" TextColor="#ff5c61" Style="{StaticResource view_text_style}"/>
+                        <Image Source="ic_pending_view_arrow" Style="{StaticResource imag_style}"/>
+                    </StackLayout>
+                </Frame>
+
+                <StackLayout Padding="0,10">
+                    <Frame HasShadow="False" CornerRadius="30" BorderColor="#0CB1C7" Padding="10" Margin="25,10">
+                        <Label Text="+ ADD ADMIN / CUSTOMER" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" 
+                               Style="{StaticResource green_label}" Padding="15,10"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AddAdminCustomerCommand}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

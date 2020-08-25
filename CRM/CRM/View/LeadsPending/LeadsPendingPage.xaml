@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CRM.View.LeadsPending.LeadsPendingPage"
+             BackgroundColor="{StaticResource background_color}"
+             xmlns:local="clr-namespace:CRM.CustomControls"
+             Title="Leads Pending"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="header_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="Margin" Value="0,5,0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="listview_style" TargetType="ListView">
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="SeparatorVisibility" Value="Default" />
+                <Setter Property="SeparatorColor" Value="#cccccc" />
+                <Setter Property="BackgroundColor" Value="#FFFFFF" />
+                <Setter Property="HasUnevenRows" Value="True" />
+                <Setter Property="VerticalScrollBarVisibility" Value="Never" />
+            </Style>
+            <Style x:Key="lead_name_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="Margin" Value="0,5,0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="mobile_number_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "16" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="Margin" Value="0,5,0,5" />
+            </Style>
+
+            <Style x:Key="button" TargetType="Button">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CornerRadius">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Int32" Phone = "25" Tablet = "28" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="HeightRequest">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "50" Tablet = "55" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="BackgroundColor" Value="#2baae1" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Text="Pick Campaign" Style="{StaticResource header_style}" Padding="15,5"/>
+            <Frame Grid.Row="1" HasShadow="False" CornerRadius="25" Padding="22,0" BorderColor="#2baae1" Margin="15,0"
+                   HeightRequest="50">
+                <local:CustomPicker TitleColor="#2baae1" TextColor="#2baae1" x:Name="picker" Image="ic_dropdown" 
+                                    Title="Select Campaign" ItemsSource="{Binding CampaignList}"
+                                    SelectedItem="{Binding SelectedCampaign}" ItemDisplayBinding="{Binding Name}">
+                    <Picker.FontSize>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Picker.FontSize>
+                </local:CustomPicker>
+            </Frame>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="22*"  Tablet="30*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="56*"  Tablet="40*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="22*"  Tablet="30*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" Text="Search" Style="{StaticResource button}"
+                         Command="{Binding SearchCommand}" CommandParameter="Pending"/>
+            </Grid>
+            <Grid Grid.Row="3" ColumnSpacing="20" Padding="15,0" IsVisible="{Binding IsAnotherPartVisible}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label Text="Campaign :" Style="{StaticResource header_style}" TextColor="{StaticResource theme_color}"/>
+                <Label Grid.Column="1" Text="{Binding SelectedCampaign.Name}" Style="{StaticResource header_style}"/>
+            </Grid>
+            <Grid Grid.Row="4" ColumnSpacing="10" Padding="15,0" IsVisible="{Binding IsAnotherPartVisible}"
+                  BackgroundColor="#FFF">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="60*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Leads Pending" Style="{StaticResource header_style}" FontSize="14"
+                       TextColor="{StaticResource theme_color}"/>
+                <Label Grid.Column="1" Text="{Binding LeadsCount}" Style="{StaticResource header_style}" FontSize="14"
+                       TextColor="{StaticResource theme_color}" HorizontalTextAlignment="End"/>
+            </Grid>
+            <BoxView Grid.Row="5" BackgroundColor="#cccccc" IsVisible="{Binding IsAnotherPartVisible}"
+                     HeightRequest="1"/>
+            <syncfusion:SfListView x:Name="listView" ItemsSource="{Binding LeadCalledData}" Style="{StaticResource listview_style}" 
+                                   IsVisible="{Binding IsAnotherPartVisible}" SelectionMode="None" Grid.Row="6"
+                                   AutoFitMode="Height" LoadMoreOption="{Binding LoadMoreOption}" 
+                                   LoadMoreCommand="{Binding LoadMoreItemsCommand}">
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <Grid  Margin="15,5" ColumnSpacing="10" RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="1"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="40"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Style="{StaticResource lead_name_style}" Text="{Binding Name}" />
+                                <Label Grid.Row="1" Style="{StaticResource mobile_number_style}" 
+                                       Text="{Binding MobileNumber}" />
+
+                                <Image Source="ic_call" HeightRequest="30" WidthRequest="30"
+                                       Grid.Column="1" Grid.RowSpan="2" VerticalOptions="CenterAndExpand">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="PhoneCall_Tapped" 
+                                                              CommandParameter="{Binding .}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+
+                                <BoxView Color="{StaticResource admin_gray_color}" Grid.Row="2" Grid.ColumnSpan="2"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

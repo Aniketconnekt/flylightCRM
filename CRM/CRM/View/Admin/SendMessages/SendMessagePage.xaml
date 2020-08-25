@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CRM.View.Admin.SendMessages.SendMessagePage"
+             BackgroundColor="{StaticResource background_color}"
+             xmlns:local="clr-namespace:CRM.CustomControls"
+             Title="Send Message">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="header_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="Margin" Value="0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="button" TargetType="Button">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CornerRadius">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Int32" Phone = "25" Tablet = "28" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="HeightRequest">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "50" Tablet = "55" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="BackgroundColor" Value="#2baae1" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Margin" Value="0,15"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Message" Style="{StaticResource header_style}" TextColor="{StaticResource theme_color}"
+                   Padding="15,0"/>
+            <Frame Margin="15,0" HasShadow="False" BorderColor="{StaticResource admin_green_color}" 
+                   Padding="2">
+                <local:CustomEditor Style="{StaticResource editor_style}" Placeholder="Type message..."
+                                    Text="{Binding Message}" HeightRequest="150"/>
+            </Frame>
+
+            <Grid VerticalOptions="EndAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="22*"  Tablet="30*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="56*"  Tablet="40*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="22*"  Tablet="30*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" Text="Share" Style="{StaticResource button}"
+                        Command="{Binding SendCommand}"/>
+            </Grid>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

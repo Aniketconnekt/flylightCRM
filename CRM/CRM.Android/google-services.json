@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "767518590572",
+    "firebase_url": "https://flylightcrmapp.firebaseio.com",
+    "project_id": "flylightcrmapp",
+    "storage_bucket": "flylightcrmapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:767518590572:android:04b09ba432043aee0f3a49",
+        "android_client_info": {
+          "package_name": "com.companyname.flylightcrm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "767518590572-20rhmbqtkmo051p3bvm7qj1iav9thvad.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHV0ktq_AaFYemUsWNAdDf95U5-YAMoAk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "767518590572-20rhmbqtkmo051p3bvm7qj1iav9thvad.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CRM.View.LeadSelection.LeadSelectionPage"
+             Title="Leads"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add Lead" Command="{Binding AddLeadCommand}"/>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="blue_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="End" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#2baae1"/>
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="gray_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="End" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments = "x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="lead_name_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="Margin" Value="0,5,0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="mobile_number_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "16" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="Margin" Value="0,5,0,5" />
+            </Style>
+            <Style x:Key="small_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "12" Tablet = "15" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c"/>
+            </Style>
+            <Style x:Key="listview_style" TargetType="ListView">
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="SeparatorVisibility" Value="Default" />
+                <Setter Property="SeparatorColor" Value="#cccccc" />
+                <Setter Property="BackgroundColor" Value="#FFFFFF" />
+                <Setter Property="HasUnevenRows" Value="True" />
+                <Setter Property="Margin" Value="10,0" />
+                <Setter Property="VerticalScrollBarVisibility" Value="Never" />
+            </Style>
+            <Style x:Key="button" TargetType="Button">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CornerRadius">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Int32" Phone = "25" Tablet = "28" />
+                    </Setter.Value>
+                </Setter>
+                <!--<Setter Property="CornerRadius" Value="25" />-->
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="BackgroundColor" Value="#2baae1" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid RowSpacing="5">
+            <Grid.RowDefinitions>
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <OnIdiom x:DataType="GridLength" Phone="50"  Tablet="55" />
+                    </RowDefinition.Height>
+                </RowDefinition>
+                <RowDefinition Height="*"/>
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <OnIdiom x:DataType="GridLength" Phone="40"  Tablet="70" />
+                    </RowDefinition.Height>
+                </RowDefinition>
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <OnIdiom x:DataType="GridLength" Phone="50"  Tablet="55" />
+                    </RowDefinition.Height>
+                </RowDefinition>
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <OnIdiom x:DataType="GridLength" Phone="8"  Tablet="8" />
+                    </RowDefinition.Height>
+                </RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Padding="10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Orientation="Horizontal" Grid.Column="1" Padding="10,0" HorizontalOptions="EndAndExpand">
+                    <Label Text="Select All" FontSize="14" TextColor="{StaticResource admin_gray_color}"
+                           VerticalTextAlignment="Center"/>
+                    <CheckBox Color="#2baae1" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                              CheckedChanged="SelectAll_Checked"/>
+                </StackLayout>
+            </Grid>
+            <syncfusion:SfListView ItemsSource="{Binding LeadsData}" Style="{StaticResource listview_style}"
+                                   SelectionMode="None" Grid.Row="1" AutoFitMode="Height" 
+                                   LoadMoreOption="{Binding LoadMoreOption}" LoadMoreCommand="{Binding LoadMoreItemsCommand}">
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <Grid Margin="10,5" ColumnSpacing="10" RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="1"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="80"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Style="{StaticResource lead_name_style}" Text="{Binding Name}" />
+                                <Label Grid.Row="1" Style="{StaticResource mobile_number_style}" 
+                                       Text="{Binding MobileNumber}" />
+                                <CheckBox Grid.Column="1" Color="#2baae1" IsChecked="{Binding IsSelectAllChecked}"
+                                          VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                                          BindingContext="{Binding .}" CheckedChanged="CheckBox_CheckedChanged"/>
+
+                                <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="1"
+                                             HorizontalOptions="EndAndExpand">
+
+                                    <Image Source="ic_menu_inactive_history" HeightRequest="30" WidthRequest="30"
+                                           Margin="0,0,10,5">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="CopyNumber_Tapped" 
+                                                                  CommandParameter="{Binding .}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+
+                                    <Image Source="ic_call" HeightRequest="30" WidthRequest="30">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="PhoneCall_Tapped" 
+                                                                  CommandParameter="{Binding .}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+
+                                <BoxView Color="{StaticResource admin_gray_color}" Grid.Row="2" Grid.ColumnSpan="2"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+            <Grid Grid.Row="2" Margin="15,0" ColumnSpacing="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="56*"/>
+                    <ColumnDefinition Width="22*"/>
+                    <ColumnDefinition Width="22*"/>
+                </Grid.ColumnDefinitions>
+                <Grid ColumnSpacing="5" HorizontalOptions="StartAndExpand">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="AllottedToUserClicked"/>
+                    </Grid.GestureRecognizers>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="allotted_to_user_active" Source="radio_active" Margin="4"/>
+                    <Image x:Name="allotted_to_user_unactive" Source="radio" Margin="4"/>
+                    <Label Grid.Column="1" Text="Lead Allotted To User" Style="{StaticResource small_text_style}"/>
+                </Grid>
+                <Grid Grid.Column="1" ColumnSpacing="5" HorizontalOptions="CenterAndExpand" 
+                      IsVisible="{Binding IsDeleteEditVisible}">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="DeleteClicked"/>
+                    </Grid.GestureRecognizers>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="delete_active" Source="radio_active" Margin="4" IsVisible="False"/>
+                    <Image x:Name="delete_unactive" Source="radio" Margin="4"/>
+                    <Label Grid.Column="1" Text="Delete" Style="{StaticResource small_text_style}"/>
+                </Grid>
+                <Grid Grid.Column="2" ColumnSpacing="5" HorizontalOptions="EndAndExpand"
+                      IsVisible="{Binding IsDeleteEditVisible}">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="EditClicked"/>
+                    </Grid.GestureRecognizers>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="edit_active" Source="radio_active" Margin="4" IsVisible="False"/>
+                    <Image x:Name="edit_unactive" Source="radio" Margin="4"/>
+                    <Label Grid.Column="1" Text="Edit" Style="{StaticResource small_text_style}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="22*"  Tablet="30*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="56*"  Tablet="40*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="22*"  Tablet="30*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" Text="Submit" Style="{StaticResource button}"
+                        Clicked="btnSubmit_Clicked" Margin="10,0"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

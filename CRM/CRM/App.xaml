@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CRM.App">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="background_color">#FAFAFA</Color>
+            <Color x:Key="theme_color">#2baae1</Color>
+            
+            <!--Admin Theme Color Codes-->
+            <Color x:Key="admin_gray_color">#4C4C4C</Color>
+            <Color x:Key="admin_green_color">#2baae1</Color>
+            <Color x:Key="admin_white_color">#F8FAF9</Color>
+            <Color x:Key="admin_lightgray_color">#F1F4F3</Color>
+
+
+            <!--Super Admin Theme Color Codes-->
+            <Color x:Key="superadmin_lightskyblue_color">#0CB1C7</Color>
+            <Color x:Key="superadmin_lightgray_color">#A1A1A1</Color>
+            <Color x:Key="superadmin_white_color">#FAFAFA</Color>
+            <Color x:Key="superadmin_skyeblue_color">#33BECF</Color>
+            <Color x:Key="superadmin_red_color">#FF5C61</Color>
+            <Color x:Key="superadmin_orange_color">#FFA973</Color>
+
+
+            <Style TargetType="Label" x:Key="header_style">
+                <Setter Property="FontSize">
+                    <OnIdiom x:TypeArguments="x:Double" Phone="18" Tablet="18" />
+                </Setter>
+                <Setter Property="TextColor" Value="#313BD3" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style TargetType="Label" x:Key="lbl_header_style">
+                <Setter Property="FontSize">
+                    <OnIdiom x:TypeArguments="x:Double" Phone="16" Tablet="16" />
+                </Setter>
+                <Setter Property="TextColor" Value="#313BD3" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="entry_style" TargetType="Entry">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="PlaceholderColor" Value="#909090" />
+                <Setter Property="TextColor" Value="#767676" />
+            </Style>
+
+            <Style x:Key="editor_style" TargetType="Editor">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="PlaceholderColor" Value="#909090" />
+                <Setter Property="TextColor" Value="#767676" />
+            </Style>
+
+            <Style TargetType="Button" x:Key="round_button_style">
+                <Setter Property="FontSize">
+                    <OnIdiom x:TypeArguments="x:Double" Phone="16" Tablet="16" />
+                </Setter>
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="BackgroundColor" Value="#313BD3" />
+                <Setter Property="CornerRadius" Value="25" />
+            </Style>
+
+            <Style TargetType="Button" x:Key="button_style">
+                <Setter Property="FontSize">
+                    <OnIdiom x:TypeArguments="x:Double" Phone="14" Tablet="14" />
+                </Setter>
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="BackgroundColor" Value="#313BD3" />
+                <Setter Property="CornerRadius" Value="0" />
+                <Setter Property="Margin" Value="-2,0,-2,0" />
+            </Style>
+
+            <Style TargetType="Picker" x:Key="picker_style">
+                <Setter Property="FontSize">
+                    <OnIdiom x:TypeArguments="x:Double" Phone="14" Tablet="14" />
+                </Setter>
+                <Setter Property="TextColor" Value="#313BD3" />
+                <Setter Property="TitleColor" Value="#313BD3" />
+            </Style>
+
+            <Style x:Key="listview_style" TargetType="ListView">
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="SeparatorVisibility" Value="Default" />
+                <Setter Property="SeparatorColor" Value="#313BD3" />
+                <Setter Property="HasUnevenRows" Value="True" />
+            </Style>
+            <Style x:Key="lbl_bold_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="CharacterSpacing" Value=".7" />
+                <Setter Property="TextColor" Value="#313BD3" />
+            </Style>
+            <Style x:Key="lblStyle" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="CharacterSpacing" Value=".7" />
+                <Setter Property="TextColor" Value="#313BD3" />
+            </Style>
+            <Style x:Key="lblStyleHE" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="End" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="CharacterSpacing" Value=".7" />
+                <Setter Property="TextColor" Value="#313BD3" />
+            </Style>
+            <Style x:Key="lbl_compaing_test_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="CharacterSpacing" Value=".7" />
+                <Setter Property="TextColor" Value="#848484" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

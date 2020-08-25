@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Add Campaign"
+             xmlns:local="clr-namespace:CRM.CustomControls"
+             x:Class="CRM.View.Admin.Compaign.AddCampaign">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="header_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="Margin" Value="0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="blue_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="End" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "30" Tablet = "45" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#fff" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="gray_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Start" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "15" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#fff" />
+            </Style>
+
+            <Style x:Key="view_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="End" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "15" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#fff" />
+            </Style>
+
+            <Style x:Key="imag_style" TargetType="Image">
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="Margin">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="Thickness" Phone = "9" Tablet = "8" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="button" TargetType="Button">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="HeightRequest">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "50" Tablet = "55" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CornerRadius">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Int32" Phone = "25" Tablet = "28" />
+                    </Setter.Value>
+                </Setter>
+                <!--<Setter Property="CornerRadius" Value="25" />-->
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="BackgroundColor" Value="#2baae1" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid RowSpacing="0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <OnIdiom x:DataType="GridLength" Phone="50"  Tablet="55" />
+                    </RowDefinition.Height>
+                </RowDefinition>
+                <RowDefinition Height="50"/>
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <OnIdiom x:DataType="GridLength" Phone="150"  Tablet="150" />
+                    </RowDefinition.Height>
+                </RowDefinition>
+                <RowDefinition Height="50"/>
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <OnIdiom x:DataType="GridLength" Phone="50"  Tablet="55" />
+                    </RowDefinition.Height>
+                </RowDefinition>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="15"/>
+            </Grid.RowDefinitions>
+            <Label Text="Campaign Name" Style="{StaticResource header_style}" Padding="15,5"/>
+            <Frame Grid.Row="1" HasShadow="False" CornerRadius="30" Padding="22,0" BorderColor="#2baae1" Margin="15,0">
+                <local:CustomEntry x:Name="txtCampaignName" Style="{StaticResource entry_style}" 
+                                   Text="{Binding Name,Mode=TwoWay}" Placeholder="campaign name" 
+                                   PlaceholderColor="{StaticResource admin_green_color}" TextColor="Black"/>
+            </Frame>
+            <!--<Label Grid.Row="2" Text="Add Users" Style="{StaticResource header_style}" Padding="15,0"/>
+            <Frame Grid.Row="3" HasShadow="False" CornerRadius="30" Padding="22,0" BorderColor="{StaticResource admin_green_color}"
+                   Margin="15,0">
+                <local:CustomPicker TitleColor="{StaticResource admin_green_color}" TextColor="{StaticResource admin_green_color}"
+                                    x:Name="pickerUser" Image="ic_dropdown" Title="Add Users" >
+                    <Picker.Items>
+                        <x:String>User</x:String>
+                    </Picker.Items>
+                    <Picker.FontSize>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Picker.FontSize>
+                </local:CustomPicker>
+            </Frame>
+            <Label Grid.Row="4" Text="Add Leads" Style="{StaticResource header_style}" Padding="15,0"/>
+            <Frame Grid.Row="5" HasShadow="False" CornerRadius="30" Padding="22,0" BorderColor="{StaticResource admin_green_color}"
+                   Margin="15,0">
+                <local:CustomPicker TitleColor="{StaticResource admin_green_color}" TextColor="{StaticResource admin_green_color}"
+                                    x:Name="pickerDescription" Image="ic_dropdown" Title="Add Leads" >
+                    <Picker.Items>
+                        <x:String>LEADS</x:String>
+                    </Picker.Items>
+                    <Picker.FontSize>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Picker.FontSize>
+                </local:CustomPicker>
+            </Frame>-->
+            <Label Grid.Row="2" Text="Campaign Description" Style="{StaticResource header_style}" Padding="15,0"/>
+            <Frame Grid.Row="3" HasShadow="False" CornerRadius="5" Padding="22,0" BorderColor="#2baae1" Margin="15,0">
+                <local:CustomEditor Placeholder="campaign description" PlaceholderColor="{StaticResource admin_green_color}"
+                                    Text="{Binding Description}"/>
+            </Frame>
+            <Grid Grid.Row="6" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="22*"  Tablet="30*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="56*"  Tablet="40*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="22*"  Tablet="30*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" x:Name="btnAdd" Text="{Binding BtnText}" Style="{StaticResource button}"
+                        Command="{Binding SaveCampaignCommand}"/>
+            </Grid>
+            <Grid x:Name="white_space_grid" Grid.Row="7" BackgroundColor="Transparent"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

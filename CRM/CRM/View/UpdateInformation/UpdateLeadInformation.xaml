@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CRM.View.UpdateInformation.UpdateLeadInformation"
+             xmlns:local="clr-namespace:CRM.CustomControls"
+             BackgroundColor="{StaticResource background_color}"
+             Title="Update Information">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="label_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="Margin" Value="0,5,0,5" />
+            </Style>
+            <Style x:Key="entry_style" TargetType="Entry">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="PlaceholderColor" Value="#a1a1a1" />
+                <Setter Property="TextColor" Value="#4c4c4c" />
+            </Style>
+            <Style x:Key="save_button_style" TargetType="Button">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CornerRadius">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Int32" Phone = "25" Tablet = "28" />
+                    </Setter.Value>
+                </Setter>
+                <!--<Setter Property="CornerRadius" Value="25" />-->
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="BackgroundColor" Value="#2baae1" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="cancel_button_style" TargetType="Button">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CornerRadius">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Int32" Phone = "25" Tablet = "28" />
+                    </Setter.Value>
+                </Setter>
+                <!--<Setter Property="CornerRadius" Value="25" />-->
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="BackgroundColor" Value="#4c4c4c" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="boxview_style" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="#cccccc" />
+                <Setter Property="Margin" Value="-15,0,-15,0" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid Padding="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <OnIdiom x:DataType="GridLength" Phone="50"  Tablet="55" />
+                    </RowDefinition.Height>
+                </RowDefinition>
+            </Grid.RowDefinitions>
+            <ScrollView>
+                <Grid RowSpacing="0" ColumnSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="1"/>
+                        <!--<RowDefinition Height="50"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="1"/>-->
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="45"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Text="Lead Name" Style="{StaticResource label_style}"/>
+                    <local:CustomEntry Grid.Row="1" Text="{Binding NewLeadsData.Name}" Placeholder="Enter lead name..." 
+                                       Style="{StaticResource entry_style}" IsReadOnly="True"/>
+                    <BoxView Grid.Row="2" Style="{StaticResource boxview_style}"/>
+
+                    <Label Grid.Row="3" Text="Mobile Number :" Style="{StaticResource label_style}"/>
+                    <local:CustomEntry Grid.Row="4" Text="{Binding NewLeadsData.MobileNumber}"
+                                   Style="{StaticResource entry_style}" Keyboard="Numeric" IsReadOnly="True"/>
+                    <BoxView Grid.Row="5" Style="{StaticResource boxview_style}"/>
+
+                    <Grid Grid.Row="6" ColumnSpacing="70">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Follow up date" Style="{StaticResource label_style}"/>
+                        <Label Grid.Column="1" Text="Follow up time" Style="{StaticResource label_style}"/>
+                    </Grid>
+
+                    <Grid Grid.Row="7" ColumnSpacing="70">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid RowSpacing="0">
+                            <Label Text="{Binding ActionDate,Mode=TwoWay}" VerticalTextAlignment="Center"
+                               TextColor="Black" FontSize="16">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Image Source="ic_dropdown.png" HeightRequest="10" WidthRequest="10"
+                                   HorizontalOptions="EndAndExpand" Margin="0,5"/>
+                            <local:SfCustomDatePicker x:Name="date" ColumnHeaderHeight="40" HorizontalOptions="Center"
+                                              PickerHeight="400" PickerMode="Dialog" PickerWidth="300" 
+                                              SelectedItem="{Binding StartDate}" VerticalOptions="Center" />
+                        </Grid>
+                        <local:CustomTimePicker Grid.Column="1" Image="ic_dropdown" Format="HH:mm"
+                                                Time = "{Binding FollowupTime,Mode=TwoWay}">
+                            <TimePicker.FontSize>
+                                <OnIdiom x:TypeArguments ="x:Double" Phone="16" Tablet="18" />
+                            </TimePicker.FontSize>
+                        </local:CustomTimePicker>
+                    </Grid>
+                    <BoxView Grid.Row="8" Style="{StaticResource boxview_style}"/>
+
+                    <Label Grid.Row="9" Text="Select Status" Style="{StaticResource label_style}"/>
+                    <local:CustomPicker Grid.Row="10"  Title="Select Action" Image="ic_dropdown" 
+                                        ItemsSource="{Binding StatusList}" SelectedItem="{Binding SelectedStatus}" 
+                                        ItemDisplayBinding="{Binding .}">
+                        <Picker.FontSize>
+                            <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                        </Picker.FontSize>
+                    </local:CustomPicker>
+                    <BoxView Grid.Row="11" Style="{StaticResource boxview_style}"/>
+
+                    <Label Grid.Row="12" Text="Select Action" Style="{StaticResource label_style}"/>
+                    <local:CustomPicker Grid.Row="13" Image="ic_dropdown" Title="Select Status" 
+                                        ItemsSource="{Binding ActionsList}" SelectedItem="{Binding SelectedAction}" 
+                                        ItemDisplayBinding="{Binding ActionName}">
+                        <Picker.FontSize>
+                            <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                        </Picker.FontSize>
+                    </local:CustomPicker>
+                    <BoxView Grid.Row="14" Style="{StaticResource boxview_style}"/>
+
+                    <Label Grid.Row="15" Text="Enter Description" Style="{StaticResource label_style}"/>
+                    <local:CustomEntry Grid.Row="16" Text="{Binding NewLeadsData.Description}" Placeholder="Enter Description" 
+                                       Style="{StaticResource entry_style}"/>
+                    <BoxView Grid.Row="17" Style="{StaticResource boxview_style}"/>
+
+                    <Grid Grid.Row="18">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="Transfer Lead" Style="{StaticResource label_style}"/>
+                        <Image Grid.Column="1" Source="ic_right_blue" Margin="8">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding LeadTransferCommand}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                    <BoxView Grid.Row="19" Style="{StaticResource boxview_style}"/>
+
+                    <!--<Grid Grid.Row="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="Send Reminder" Style="{StaticResource label_style}"/>
+                        <Image Grid.Column="1" Source="ic_right_blue" Margin="8">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SendReminderCommand}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                    <BoxView Grid.Row="21" Style="{StaticResource boxview_style}"/>
+
+                    <Grid Grid.Row="22">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Credit Form" Style="{StaticResource label_style}"/>
+                        <Image Grid.Column="1" Source="ic_right_blue" Margin="8">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CreditFormCommand}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                    <BoxView Grid.Row="23" Style="{StaticResource boxview_style}"/>-->
+
+                    <Grid Grid.Row="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Edit Lead Detail" Style="{StaticResource label_style}"/>
+                        <Image Grid.Column="1" Source="ic_right_blue" Margin="8">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding EditLeadDetailCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                    <BoxView Grid.Row="21" Style="{StaticResource boxview_style}"/>
+                </Grid>
+            </ScrollView>
+            <Grid Grid.Row="1" ColumnSpacing="34">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button Text="Cancel" Style="{StaticResource cancel_button_style}"
+                        Command="{Binding CancelCommand}"/>
+                <Button Grid.Column="1" Text="SAVE" Style="{StaticResource save_button_style}"
+                        Command="{Binding SaveCommand}"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

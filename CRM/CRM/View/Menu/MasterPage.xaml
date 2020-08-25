@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" 
+             Title="Master Page"  
+             x:Class="CRM.View.Menu.MasterPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="lblStyle" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="CharacterSpacing" Value=".3" />
+                <Setter Property="TextColor" Value="#313BD3" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="lbluser_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="CharacterSpacing" Value=".7" />
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="imgStyle" TargetType="Image">
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="Margin" Value="0,5" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="HeightRequest" Value="30" />
+                <Setter Property="WidthRequest" Value="30" />
+            </Style>
+
+            <Style x:Key="listview_style" TargetType="ListView">
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="SeparatorVisibility" Value="None" />
+                <Setter Property="SeparatorColor" Value="#313BD3" />
+                <Setter Property="HasUnevenRows" Value="True" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Image x:Name="imgBackground" Source="background" Aspect="AspectFill"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid x:Name="GrdMenuTitle" ColumnSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame Margin="20" Padding="0" CornerRadius="50" BackgroundColor="#2799CC">
+                        <Image Source="ic_user"/>
+                    </Frame>
+                    <Label Grid.Column="1" Text="{Binding LoginUserName}" Style="{StaticResource lbluser_style}"/>
+                </Grid>
+                <ListView Grid.Row="1" x:Name="menu_list" ItemsSource="{Binding list}" 
+                          ItemTapped="OnItemTapped" Style="{StaticResource listview_style}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell >
+                                <Grid  Margin="0,5" ColumnSpacing="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="5"/>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="1"/>
+                                    </Grid.ColumnDefinitions>
+                                    <BoxView IsVisible="{Binding seperator_visible}" 
+                                             BackgroundColor="{Binding seperator_color}"/>
+                                    <Image Grid.Column="1" Source="{Binding icon}" Style="{StaticResource imgStyle}"/>
+                                    <Label Grid.Column="2" Style="{StaticResource lblStyle}" Text="{Binding title}"
+                                           TextColor="{Binding title_text_color}"/>
+                                    <Image Grid.Column="3" Source="ic_gray_arrow" Margin="5"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Leads By Status"
+             BackgroundColor="{StaticResource background_color}"
+             xmlns:local="clr-namespace:CRM.CustomControls"
+             x:Class="CRM.View.Admin.Lead.LeadsByStatusPage"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="header_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="Margin" Value="0,5,0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="listview_style" TargetType="ListView">
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="SeparatorVisibility" Value="Default" />
+                <Setter Property="SeparatorColor" Value="#cccccc" />
+                <Setter Property="BackgroundColor" Value="#FFFFFF" />
+                <Setter Property="HasUnevenRows" Value="True" />
+                <Setter Property="VerticalScrollBarVisibility" Value="Never" />
+            </Style>
+            <Style x:Key="lead_name_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="Margin" Value="0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="mobile_number_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "16" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="Margin" Value="0,5,0,5" />
+            </Style>
+
+            <Style x:Key="button" TargetType="Button">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CornerRadius">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Int32" Phone = "25" Tablet = "28" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="HeightRequest">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "50" Tablet = "55" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="BackgroundColor" Value="#2baae1" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <Label Text="Select Status" Style="{StaticResource header_style}" Padding="15,5"/>
+            <Frame Grid.Row="1" HasShadow="False" CornerRadius="25" Padding="22,0" Margin="15,0"
+                   BorderColor="#2baae1" HeightRequest="50">
+                <local:CustomPicker TitleColor="#2baae1" TextColor="#2baae1" x:Name="picker" Image="ic_dropdown" 
+                                    Title="Select Status" ItemsSource="{Binding StatusList}"
+                                    SelectedItem="{Binding SelectedStatus}" ItemDisplayBinding="{Binding ActionName}">
+                    <Picker.FontSize>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Picker.FontSize>
+                </local:CustomPicker>
+            </Frame>
+
+            <Label Text="Select User" Style="{StaticResource header_style}" Padding="15,0" Grid.Row="2"/>
+            <Frame HasShadow="False" CornerRadius="25" Padding="22,0" BorderColor="{StaticResource admin_green_color}"
+                       Margin="15,0" HeightRequest="50" Grid.Row="3">
+                <local:CustomPicker TitleColor="{StaticResource admin_green_color}" TextColor="{StaticResource admin_green_color}" 
+                                        Image="ic_dropdown" Title="SELECT USER" ItemsSource="{Binding UsersList}" 
+                                        SelectedItem="{Binding SelectedUser}" ItemDisplayBinding="{Binding UserName}">
+                    <Picker.FontSize>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Picker.FontSize>
+                </local:CustomPicker>
+            </Frame>
+
+            <Grid Grid.Row="4" VerticalOptions="EndAndExpand" Padding="0,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="22*"  Tablet="30*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="56*"  Tablet="40*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="22*"  Tablet="30*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" Text="Search" Style="{StaticResource button}"
+                        Command="{Binding SearchCommand}"/>
+            </Grid>
+
+            <syncfusion:SfListView ItemsSource="{Binding LeadsByStatusList}" Style="{StaticResource listview_style}" 
+                                   IsVisible="{Binding IsAnotherPartVisible}" Grid.Row="5" 
+                                   SelectionMode="None" AutoFitMode="Height" LoadMoreOption="{Binding LoadMoreOption}"
+                                   LoadMoreCommand="{Binding LoadMoreItemsCommand}">
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <Grid Margin="15,5" RowSpacing="-2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="1"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Style="{StaticResource lead_name_style}" Text="{Binding Name}" />
+                                <Label Grid.Row="1" Style="{StaticResource mobile_number_style}" 
+                                       Text="{Binding MobileNumber}" />
+
+                                <BoxView Color="{StaticResource admin_lightgray_color}" Grid.Row="2"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

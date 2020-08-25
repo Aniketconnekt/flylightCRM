@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CRM.SuperAdmin.View.Successful.SuccessfulPage"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             BackgroundImageSource="background"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="header_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="Margin" Value="0,5,0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="button" TargetType="Button">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CornerRadius">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Int32" Phone = "25" Tablet = "28" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="HeightRequest">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "50" Tablet = "55" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="BackgroundColor" Value="{StaticResource superadmin_lightskyblue_color}" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Margin" Value="0,30"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="15,50" Spacing="5">
+            <Image Source="ic_successful" HorizontalOptions="CenterAndExpand" HeightRequest="150"/>
+            <Label Text="SUCCESSFUL!" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                   FontSize="32" TextColor="{StaticResource superadmin_lightskyblue_color}" Margin="0,20"/>
+            <Label Text="Thank You! &#x0a; The operation has been successfully done."
+                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                   FontSize="15" TextColor="#A1A1A1">
+                <Label.Margin>
+                    <OnIdiom x:TypeArguments="Thickness" Tablet="0" Phone="20,0" />
+                </Label.Margin>
+            </Label>
+            <Button Text="OK" Style="{StaticResource button}" Clicked="btnSend_Clicked" HorizontalOptions="CenterAndExpand"
+                    Padding="50,0"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

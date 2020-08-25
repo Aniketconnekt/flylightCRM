@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CRM.SuperAdmin.View.Performance.MoreDetailPage"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             BackgroundColor="{StaticResource background_color}"
+             Title="More Details">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="label_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{StaticResource admin_gray_color}" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style x:Key="entry_style" TargetType="Entry">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="PlaceholderColor" Value="#A1A1A1" />
+                <Setter Property="TextColor" Value="#4C4C4C" />
+            </Style>
+            <Style x:Key="form_label_style" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4C4C4C" />
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+            </Style>
+            <Style x:Key="boxview_style" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="#A1A1A1" />
+            </Style>
+            <Style x:Key="button" TargetType="Button">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CornerRadius">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Int32" Phone = "25" Tablet = "28" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="HeightRequest">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "50" Tablet = "55" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="BackgroundColor" Value="#2baae1" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="Padding" Value="50,0"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout Padding="15,10">
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="2"/>
+
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="1"/>
+
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="1"/>
+
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="1"/>
+                </Grid.RowDefinitions>
+
+                <Label Text="Admin Name" Style="{StaticResource label_style}"/>
+                <Label Text="{Binding MoreDetailData.AdminName}" Style="{StaticResource form_label_style}" Grid.Row="1"/>
+                <BoxView Grid.Row="2" Style="{StaticResource boxview_style}"/>
+
+                <Label Text="Total Campaigns" Style="{StaticResource label_style}" Grid.Row="3"/>
+                <Grid Grid.Row="4">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CampaignsCommand}"/>
+                    </Grid.GestureRecognizers>
+                    <Label Text="{Binding MoreDetailData.TotalCampaign}" Style="{StaticResource form_label_style}"/>
+                    <Image Source="ic_right_blue.png" HeightRequest="20" WidthRequest="20" Margin="5"
+                           HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+                </Grid>
+                <BoxView Grid.Row="5" Style="{StaticResource boxview_style}"/>
+
+                <Label Text="Total Users" Style="{StaticResource label_style}" Grid.Row="6"/>
+                <Grid Grid.Row="7">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TotalUsersCommand}"/>
+                    </Grid.GestureRecognizers>
+                    <Label Text="{Binding MoreDetailData.TotalUsers}" Style="{StaticResource form_label_style}"/>
+                    <Image Source="ic_right_blue.png" HeightRequest="20" WidthRequest="20" Margin="5"
+                           HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+                </Grid>
+                <BoxView Grid.Row="8" Style="{StaticResource boxview_style}"/>
+
+                <Label Text="Total Leads" Style="{StaticResource label_style}" Grid.Row="9"/>
+                <Label Text="{Binding MoreDetailData.TotalLeads}" Style="{StaticResource form_label_style}" Grid.Row="10"/>
+                <BoxView Grid.Row="11" Style="{StaticResource boxview_style}"/>
+
+            </Grid>
+
+            <Button Text="Back" Style="{StaticResource button}" Command="{Binding BackCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

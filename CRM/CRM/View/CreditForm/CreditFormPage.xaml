@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CRM.View.CreditForm.CreditFormPage"
+               BackgroundColor="{StaticResource background_color}"
+             xmlns:local="clr-namespace:CRM.CustomControls"
+             Title="Credit Form">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="header_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="Margin" Value="0,5,0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="entry_style" TargetType="Entry">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="PlaceholderColor" Value="#a1a1a1" />
+                <Setter Property="TextColor" Value="#2baae1" />
+            </Style>
+            <Style x:Key="button" TargetType="Button">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CornerRadius">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Int32" Phone = "25" Tablet = "28" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="HeightRequest">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "50" Tablet = "55" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="BackgroundColor" Value="#2baae1" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid Padding="15,0,15,15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition>
+                        <RowDefinition.Height>
+                            <OnIdiom x:DataType="GridLength" Phone="50"  Tablet="55" />
+                        </RowDefinition.Height>
+                    </RowDefinition>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition>
+                        <RowDefinition.Height>
+                            <OnIdiom x:DataType="GridLength" Phone="160"  Tablet="230" />
+                        </RowDefinition.Height>
+                    </RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid ColumnSpacing="20" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Campaign :" Style="{StaticResource header_style}" TextColor="{StaticResource theme_color}"/>
+                    <Label Grid.Column="1" Text="{Binding NewLeadsData.CampaignName}" Style="{StaticResource header_style}"/>
+                </Grid>
+                <Label Grid.Row="2" Text="Credit Limit" Style="{StaticResource header_style}"/>
+                <Frame Grid.Row="3" HasShadow="False" CornerRadius="30" Padding="22,0" 
+                       BorderColor="{StaticResource theme_color}" >
+                    <local:CustomEntry Text="{Binding CreditFormModel.CreditAmount}" Style="{StaticResource entry_style}" 
+                                       Placeholder="Enter Limit"/>
+                </Frame>
+                <Label Grid.Row="5" Text="Description" Style="{StaticResource header_style}"/>
+                <Grid Grid.Row="6" BackgroundColor="{StaticResource theme_color}">
+                    <local:CustomEditor BackgroundColor="#FFF" Style="{StaticResource editor_style}" 
+                                        Margin="2" Placeholder="Enter description..."
+                                        Text="{Binding CreditFormModel.Desciption}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="22*"  Tablet="30*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="56*"  Tablet="40*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="22*"  Tablet="30*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" Text="Submit" Style="{StaticResource button}"
+                        Command="{Binding SubmitCommand}"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

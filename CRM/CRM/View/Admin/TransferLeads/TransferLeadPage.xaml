@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Transfer Lead"
+             BackgroundColor="White"
+             xmlns:local="clr-namespace:CRM.CustomControls"
+             x:Class="CRM.View.Admin.TransferLeads.TransferLeadPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="header_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Margin" Value="0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="blue_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="End" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "30" Tablet = "45" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#fff" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="gray_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Start" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "15" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{StaticResource admin_gray_color}" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="view_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="End" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "15" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#fff" />
+            </Style>
+            <Style x:Key="imag_style" TargetType="Image">
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="Margin">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="Thickness" Phone = "9" Tablet = "8" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="button" TargetType="Button">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="HeightRequest">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "50" Tablet = "55" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CornerRadius">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Int32" Phone = "25" Tablet = "28" />
+                    </Setter.Value>
+                </Setter>
+                <!--<Setter Property="CornerRadius" Value="25" />-->
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="BackgroundColor" Value="#2baae1" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="green_label" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#2baae1" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="green_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "18" Tablet = "22" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#2baae1" />
+            </Style>
+            <Style x:Key="bold_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "22" Tablet = "28" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <StackLayout>
+                <Label Text="Select From User" Style="{StaticResource header_style}" Padding="15,10,15,0"/>
+                <Frame HasShadow="False" CornerRadius="25" Padding="22,0" 
+                       BorderColor="{StaticResource admin_green_color}" Margin="15,0" HeightRequest="50">
+                    <local:CustomPicker TitleColor="{StaticResource admin_green_color}" TextColor="{StaticResource admin_green_color}" 
+                                        Image="ic_dropdown" Title="SELECT FROM USER" 
+                                        ItemsSource="{Binding UsersList}" SelectedItem="{Binding SelectedFromUser}"
+                                        ItemDisplayBinding="{Binding UserName}">
+                        <Picker.FontSize>
+                            <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                        </Picker.FontSize>
+                    </local:CustomPicker>
+                </Frame>
+
+                <Label Text="Select To User" Style="{StaticResource header_style}" Padding="15,0"/>
+                <Frame HasShadow="False" CornerRadius="25" Padding="22,0" BorderColor="{StaticResource admin_green_color}"
+                       Margin="15,0" HeightRequest="50">
+                    <local:CustomPicker TitleColor="{StaticResource admin_green_color}" TextColor="{StaticResource admin_green_color}" 
+                                        Image="ic_dropdown" Title="SELECT TO USER" ItemsSource="{Binding UsersList}" 
+                                        SelectedItem="{Binding SelectedToUser}" ItemDisplayBinding="{Binding UserName}">
+                        <Picker.FontSize>
+                            <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                        </Picker.FontSize>
+                    </local:CustomPicker>
+                </Frame>
+
+                <Button Text="Transfer Leads" Style="{StaticResource button}" Command="{Binding TransferCommand}"
+                        VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" 
+                        Padding="50,0" Margin="0,10"/>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

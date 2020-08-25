@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CRM.View.Login.LoginPage"
+             xmlns:local="clr-namespace:CRM.CustomControls"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="lbl_header" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="End" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "30" Tablet = "35" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CharacterSpacing" Value=".1" />
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="lbl_second_header" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Start" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CharacterSpacing" Value=".1" />
+                <Setter Property="TextColor" Value="DarkGray" />
+            </Style>
+            <Style x:Key="entry" TargetType="Entry">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="PlaceholderColor" Value="#a1a1a1" />
+                <Setter Property="TextColor" Value="#2baae1" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="button" TargetType="Button">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CornerRadius">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Int32" Phone = "25" Tablet = "28" />
+                    </Setter.Value>
+                </Setter>
+                <!--<Setter Property="CornerRadius" Value="25" />-->
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="BackgroundColor" Value="#2baae1" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="green_label" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{StaticResource admin_white_color}" />
+                <Setter Property="BackgroundColor" Value="#2baae1" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="65*"/>
+                </Grid.RowDefinitions>
+                <Image Source="background" Aspect="AspectFill" Grid.RowSpan="2"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition >
+                            <RowDefinition.Height>
+                                <OnIdiom x:DataType="GridLength" Phone="60"  Tablet="110" />
+                            </RowDefinition.Height>
+                        </RowDefinition>
+                        <RowDefinition >
+                            <RowDefinition.Height>
+                                <OnIdiom x:DataType="GridLength" Phone="*"  Tablet="*" />
+                            </RowDefinition.Height>
+                        </RowDefinition>
+                        <RowDefinition>
+                            <RowDefinition.Height>
+                                <OnIdiom x:DataType="GridLength" Phone="*"  Tablet="*" />
+                            </RowDefinition.Height>
+                        </RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="1" Text="Welcome Back!" Style="{StaticResource lbl_header}"/>
+                    <Label Grid.Row="2" Text="Log in to your existing account of FlylightCRM" Style="{StaticResource lbl_second_header}"/>
+                </Grid>
+                <Grid Grid.Row="1" Padding="50,0" RowSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition >
+                            <RowDefinition.Height>
+                                <OnIdiom x:DataType="GridLength" Phone="55"  Tablet="60" />
+                            </RowDefinition.Height>
+                        </RowDefinition>
+                        <RowDefinition >
+                            <RowDefinition.Height>
+                                <OnIdiom x:DataType="GridLength" Phone="55"  Tablet="60" />
+                            </RowDefinition.Height>
+                        </RowDefinition>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition >
+                            <RowDefinition.Height>
+                                <OnIdiom x:DataType="GridLength" Phone="15"  Tablet="40" />
+                            </RowDefinition.Height>
+                        </RowDefinition>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Frame ClassId="FrmMobile" x:Name="mobile_frame" HasShadow="False" CornerRadius="30" BorderColor="#a1a1a1">
+                        <Frame.Padding>
+                            <OnIdiom x:TypeArguments="Thickness" Tablet="22,0,15,0" Phone="18,0,0,0" />
+                        </Frame.Padding>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="55"/>
+                            </Grid.ColumnDefinitions>
+                            <local:CustomEntry x:Name="txtMobileNumber" Text="{Binding MobileNo}" Placeholder="Mobile Number" 
+                                               Keyboard="Numeric" Style="{StaticResource entry}" MaxLength="10"
+                                               Focused="txtMobileNumber_Focused" Unfocused="txtMobileNumber_Unfocused"/>
+                            <Image Grid.Column="1" x:Name="img_mobile_active" Source="ic_mobileactive" Margin="10" IsVisible="False"/>
+                            <Image Grid.Column="1" x:Name="img_mobile_inactive" Source="ic_mobile" Margin="10"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Row="1" ClassId="FrmPassword" x:Name="password_frame" HasShadow="False" CornerRadius="30" BorderColor="#a1a1a1" >
+                        <Frame.Padding>
+                            <OnIdiom x:TypeArguments="Thickness" Tablet="22,0,15,0" Phone="18,0,0,0" />
+                        </Frame.Padding>
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="55"/>
+                            </Grid.ColumnDefinitions>
+                            <local:CustomEntry x:Name="txtPassword" Placeholder="Password" Text="{Binding Password}"
+                                               Style="{StaticResource entry}" Focused="txtPassword_Focused" 
+                                               Unfocused="txtPassword_Unfocused" IsPassword="True"/>
+                            <Image Grid.Column="1" x:Name="img_password_active" Source="ic_lockactive" Margin="10" IsVisible="False"/>
+                            <Image Grid.Column="1" x:Name="img_password_inactive" Source="ic_lock" Margin="10"/>
+                        </Grid>
+                    </Frame>
+
+                    <Grid Grid.Row="2" ColumnSpacing="15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Color="#a1a1a1"/>
+                        <Label Grid.Column="1" Text="Remember me" TextColor="#a1a1a1" FontSize="14" VerticalTextAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Row="4" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition>
+                                <RowDefinition.Height>
+                                    <OnIdiom x:DataType="GridLength" Phone="50"  Tablet="55" />
+                                </RowDefinition.Height>
+                            </RowDefinition>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition>
+                                <ColumnDefinition.Width>
+                                    <OnIdiom x:DataType="GridLength" Phone="18*"  Tablet="30*" />
+                                </ColumnDefinition.Width>
+                            </ColumnDefinition>
+                            <ColumnDefinition>
+                                <ColumnDefinition.Width>
+                                    <OnIdiom x:DataType="GridLength" Phone="Auto"  Tablet="Auto" />
+                                </ColumnDefinition.Width>
+                            </ColumnDefinition>
+                            <ColumnDefinition>
+                                <ColumnDefinition.Width>
+                                    <OnIdiom x:DataType="GridLength" Phone="18*"  Tablet="30*" />
+                                </ColumnDefinition.Width>
+                            </ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Frame Grid.Column="1" HasShadow="False" CornerRadius="30" Padding="22,0" BackgroundColor="#2baae1">
+                            <Label Text="LOG IN" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                                   Style="{StaticResource green_label}"/>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding LoginCommand}"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                        <Label Grid.Row="1" Grid.Column="1" Text="Forgot Password?" TextColor="#a1a1a1" FontSize="14"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ForgetPasswordCommand}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                            <Label Text="Don't have an account?" TextColor="#000000" FontSize="14"  VerticalTextAlignment="Center"/>
+                            <Label Text="SIGN UP" TextColor="#000033" FontSize="16" VerticalTextAlignment="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SignUpCommand}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

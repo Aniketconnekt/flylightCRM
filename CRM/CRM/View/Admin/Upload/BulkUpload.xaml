@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Bulk Upload"
+             xmlns:local="clr-namespace:CRM.CustomControls"
+             x:Class="CRM.View.Admin.Upload.BulkUpload"
+             BackgroundColor="{StaticResource admin_white_color}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="green_label" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "18" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+            </Style>
+            <Style x:Key="header_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="Margin" Value="0,5,0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="blue_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="End" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "30" Tablet = "45" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#fff" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="gray_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Start" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "15" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#fff" />
+            </Style>
+
+            <Style x:Key="view_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="End" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "15" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#fff" />
+            </Style>
+
+            <Style x:Key="imag_style" TargetType="Image">
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="Margin">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="Thickness" Phone = "9" Tablet = "8" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="button" TargetType="Button">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="HeightRequest">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "50" Tablet = "55" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CornerRadius">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Int32" Phone = "25" Tablet = "28" />
+                    </Setter.Value>
+                </Setter>
+                <!--<Setter Property="CornerRadius" Value="25" />-->
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="BackgroundColor" Value="#2baae1" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="label_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="Margin" Value="4,5,0,5" />
+            </Style>
+            <Style x:Key="listview_style" TargetType="ListView">
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="SeparatorVisibility" Value="Default" />
+                <Setter Property="SeparatorColor" Value="#cccccc" />
+                <Setter Property="BackgroundColor" Value="#FFFFFF" />
+                <Setter Property="HasUnevenRows" Value="True" />
+                <Setter Property="VerticalScrollBarVisibility" Value="Never" />
+            </Style>
+            <Style x:Key="lead_name_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="Margin" Value="0,5,0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="mobile_number_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "16" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="Margin" Value="0,5,0,5" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid RowSpacing="0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <OnIdiom x:DataType="GridLength" Phone="50"  Tablet="55" />
+                    </RowDefinition.Height>
+                </RowDefinition>
+                <RowDefinition Height="40"/>
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <OnIdiom x:DataType="GridLength" Phone="50"  Tablet="55" />
+                    </RowDefinition.Height>
+                </RowDefinition>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Text="Select Campaign" Style="{StaticResource header_style}" Padding="15,0"/>
+            <Frame Grid.Row="1" HasShadow="False" CornerRadius="30" Padding="22,0" BorderColor="#2baae1" Margin="15,0">
+                <local:CustomPicker TitleColor="{StaticResource admin_green_color}" TextColor="{StaticResource admin_green_color}" 
+                                    Image="ic_dropdown" Title="SELECT CAMPAIGN" 
+                                        ItemsSource="{Binding CampaignList}" SelectedItem="{Binding SelectedCampaign}"
+                                        ItemDisplayBinding="{Binding Campaign}">
+                    <Picker.FontSize>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Picker.FontSize>
+                </local:CustomPicker>
+            </Frame>
+
+            <Label Grid.Row="2" Text="Choose a file to Upload" Style="{StaticResource header_style}" 
+                   Padding="15,0"/>
+            <Frame HasShadow="False" CornerRadius="5" Padding="0" Margin="15,0" Grid.Row="3"
+                   BackgroundColor="{StaticResource admin_green_color}" BorderColor="#2baae1"
+                   HorizontalOptions="CenterAndExpand">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding UploadFileCommand}"/>
+                </Frame.GestureRecognizers>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Choose File" Padding="20,0" VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="StartAndExpand" Style="{StaticResource green_label}"/>
+                    <Image Source="ic_upload" HeightRequest="30" WidthRequest="30" Margin="10,0"
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+            </Frame>
+
+            <Grid Grid.Row="4" Margin="0,50,0,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="22*"  Tablet="30*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="56*"  Tablet="40*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="22*"  Tablet="30*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" x:Name="btnSubmit" Text="Upload" Style="{StaticResource button}"
+                        Command="{Binding SubmitCommand}" Margin="0,0,0,25" IsEnabled="{Binding IsUploadBtnEnabled}"/>
+            </Grid>
+
+            <Label Grid.Row="6" Text="Click here to download template" Style="{StaticResource header_style}" 
+                   Padding="15,0" VerticalOptions="EndAndExpand"/>
+            <Frame HasShadow="False" CornerRadius="5" Padding="0" Margin="15,10" Grid.Row="7"
+                   BackgroundColor="{StaticResource admin_green_color}" BorderColor="#2baae1"
+                   HorizontalOptions="CenterAndExpand" HeightRequest="50">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding DownloadFileCommand}"/>
+                </Frame.GestureRecognizers>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Download Template" Padding="10,0" VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="StartAndExpand" Style="{StaticResource green_label}"/>
+                    <Image Source="ic_download" HeightRequest="30" WidthRequest="30" Margin="10,0"
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

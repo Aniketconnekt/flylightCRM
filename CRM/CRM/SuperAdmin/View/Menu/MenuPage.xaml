@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CRM.SuperAdmin.View.Menu.MenuPage"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" 
+             Title="Master Page">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="lblStyle" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="CharacterSpacing" Value=".3" />
+                <Setter Property="TextColor" Value="#313BD3" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="lbluser_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="CharacterSpacing" Value=".7" />
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="imgStyle" TargetType="Image">
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="HeightRequest" Value="30" />
+                <Setter Property="WidthRequest" Value="30" />
+            </Style>
+
+            <Style x:Key="listview_style" TargetType="ListView">
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="SeparatorVisibility" Value="None" />
+                <Setter Property="SeparatorColor" Value="#313BD3" />
+                <Setter Property="HasUnevenRows" Value="True" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Image x:Name="imgBackground" Source="background" Aspect="AspectFill"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid x:Name="GrdMenuTitle" ColumnSpacing="0" BackgroundColor="#33BECF">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame Margin="20" Padding="0" CornerRadius="50" BackgroundColor="#2799CC">
+                        <Image Source="ic_user"/>
+                    </Frame>
+                    <Label Grid.Column="1" Text="{Binding LoginUserName}" Style="{StaticResource lbluser_style}"/>
+                </Grid>
+                <ListView Grid.Row="1" x:Name="menu_list" ItemsSource="{Binding list}" 
+                          ItemTapped="OnItemTapped" Style="{StaticResource listview_style}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell >
+                                <Grid Padding="0,5" BackgroundColor="{Binding row_background_color}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="{Binding icon}" Style="{StaticResource imgStyle}" Margin="0,5"/>
+                                    <Label Grid.Column="1" Style="{StaticResource lblStyle}" Text="{Binding title}"
+                                                   TextColor="{Binding title_text_color}"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CRM.View.SelectLanguage.SelectLanguagePage"
+             xmlns:local="clr-namespace:CRM.CustomControls"
+             NavigationPage.HasNavigationBar="False"
+             Title="Tille"
+             BackgroundImageSource="background">
+    <ContentPage.Content>
+        <Grid RowSpacing="60">
+            <Grid.ColumnSpacing>
+                <OnIdiom x:TypeArguments="x:Double" Phone="40" Tablet="60"></OnIdiom>
+            </Grid.ColumnSpacing>
+            <Grid.RowDefinitions>
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <OnIdiom x:DataType="GridLength" Phone="12*"  Tablet="15*" />
+                    </RowDefinition.Height>
+                </RowDefinition>
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <OnIdiom x:DataType="GridLength" Phone="60*"  Tablet="85*" />
+                    </RowDefinition.Height>
+                </RowDefinition>
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <OnIdiom x:DataType="GridLength" Phone="63*"  Tablet="60*" />
+                    </RowDefinition.Height>
+                </RowDefinition>
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Source="logo.png" Aspect="AspectFit" WidthRequest="300" HeightRequest="150"/>
+
+
+            <Grid Grid.Row="2" >
+                <Grid.Padding>
+                    <OnIdiom x:TypeArguments="Thickness" Tablet="50,0,50,0" Phone="35,0,35,0" />
+                </Grid.Padding>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                </Grid.RowDefinitions>
+                <Frame ClassId="FrmLanguage" HasShadow="False" CornerRadius="30" Padding="22,0,22,0" BorderColor="#2baae1" >
+                    <local:CustomPicker TitleColor="#2baae1" TextColor="#2baae1" x:Name="picker" Image="ic_dropdown" 
+                                        Title="SELECT LANGUAGE" SelectedIndexChanged="picker_SelectedIndexChanged">
+                        <Picker.Items>
+                            <x:String>ENGLISH</x:String>
+                            <x:String>हिंदी</x:String>
+                        </Picker.Items>
+                        <Picker.FontSize>
+                            <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                        </Picker.FontSize>
+                    </local:CustomPicker>
+                </Frame>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

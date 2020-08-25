@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CRM.View.Admin.Status.StatusPage"
+              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Status">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddStatusCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="lead_name_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#0CB1C7" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="mobile_number_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{StaticResource admin_gray_color}" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style x:Key="listview_style" TargetType="ListView">
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="SeparatorVisibility" Value="None" />
+                <Setter Property="SeparatorColor" Value="#cccccc" />
+                <Setter Property="BackgroundColor" Value="#FFFFFF" />
+                <Setter Property="HasUnevenRows" Value="True" />
+                <Setter Property="VerticalScrollBarVisibility" Value="Never" />
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ListView x:Name="mainView" ItemsSource="{Binding StatusData}" Style="{StaticResource listview_style}" 
+                  ItemTapped="OnItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell >
+                        <Grid x:Name="Item" RowSpacing="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="10"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Style="{StaticResource lead_name_style}" Text="Action Name:" />
+                            <Label Grid.Column="1" Style="{StaticResource mobile_number_style}" Text="{Binding ActionName}" />
+
+                            <StackLayout Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalOptions="EndAndExpand"
+                                         Margin="0,5,0,0">
+                                <Frame HasShadow="False" BackgroundColor="{StaticResource theme_color}" Padding="5" Margin="0">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer BindingContext="{Binding Source={x:Reference mainView}, Path=BindingContext}"
+                                                                  Command="{Binding EditCommand}"
+                                                                  CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"/>
+                                    </Frame.GestureRecognizers>
+                                    <Label Text="EDIT" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" 
+                                               TextColor="White" Padding="10,5" FontAttributes="Bold"/>
+                                </Frame>
+                                <Frame HasShadow="False" BackgroundColor="#A1A1A1" Padding="5" Margin="10,0,0,0">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer BindingContext="{Binding Source={x:Reference mainView}, Path=BindingContext}"
+                                                                  Command="{Binding DeleteCommand}"
+                                                                  CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"/>
+                                        </Frame.GestureRecognizers>
+                                        <Label Text="DELETE" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" 
+                                               TextColor="White" Padding="10,5" FontAttributes="Bold"/>
+                                    </Frame>
+                            </StackLayout>
+
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

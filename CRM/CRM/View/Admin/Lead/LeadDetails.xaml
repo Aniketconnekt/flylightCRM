@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:CRM.Common.Converters"
+             mc:Ignorable="d"
+              BackgroundColor="#FAFAFA"
+             Title="Lead Details"
+             x:Class="CRM.View.Admin.Lead.LeadDetails"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:TextToBoolConverter x:Key="TextToBoolConverter" />
+            <Style x:Key="green_label" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "18" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#2baae1" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+            </Style>
+            <Style x:Key="green_header_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{StaticResource admin_green_color}" />
+                <Setter Property="Margin" Value="0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="header_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Margin" Value="0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="bold_header_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "18" Tablet = "22" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{StaticResource admin_gray_color}" />
+                <Setter Property="Margin" Value="0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="label_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="Margin" Value="4,5,0,5" />
+            </Style>
+            <Style x:Key="entry_style" TargetType="Entry">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="PlaceholderColor" Value="#a1a1a1" />
+                <Setter Property="TextColor" Value="#4c4c4c" />
+            </Style>
+            <Style x:Key="boxview_style" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="#a1a1a1" />
+                <Setter Property="Margin" Value="-15,0,-15,0" />
+            </Style>
+            <Style x:Key="button" TargetType="Button">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "16" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CornerRadius">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Int32" Phone = "30" Tablet = "28" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="BackgroundColor" Value="{StaticResource admin_green_color}" />
+                <Setter Property="TextColor" Value="{StaticResource admin_white_color}"/>
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="mobile_number_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="End" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "16" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{StaticResource admin_gray_color}" />
+                <Setter Property="Margin" Value="0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="lead_name_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{StaticResource admin_gray_color}" />
+                <Setter Property="Margin" Value="0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="green_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "20" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#2baae1" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <StackLayout Padding="0,10" Spacing="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="1 DAY" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" 
+                           Style="{DynamicResource header_style}" TextColor="{Binding Day1Color}" Padding="15,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Day1Command}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Grid.Column="1" Text="7 DAYS" VerticalOptions="CenterAndExpand" 
+                           HorizontalOptions="CenterAndExpand" Style="{DynamicResource header_style}" Padding="15,0"
+                           TextColor="{Binding Day7Color}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Day7Command}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Grid.Column="2" Text="30 DAYS" VerticalOptions="CenterAndExpand" 
+                           HorizontalOptions="CenterAndExpand" Style="{DynamicResource header_style}" Padding="15,0"
+                           TextColor="{Binding Day30Color}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Day30Command}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+                <StackLayout BackgroundColor="{StaticResource admin_lightgray_color}" Spacing="0">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" Spacing="0" Margin="10">
+                        <Label Text="User Name: " Style="{StaticResource bold_header_style}" VerticalOptions="CenterAndExpand" 
+                           HorizontalOptions="StartAndExpand" Margin="20,0,0,0">
+                        </Label>
+                        <Label Text="{Binding UserName}" Style="{DynamicResource header_style}" HorizontalTextAlignment="Start" 
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="5,0,0,0"
+                           FontAttributes="None">
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource admin_white_color}" Padding="5">
+                    <Label Text="Leads Called" Style="{StaticResource header_style}" VerticalOptions="CenterAndExpand" 
+                           HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" 
+                                 VerticalOptions="CenterAndExpand" Margin="10,0">
+                        <Label Text="Leads : " Style="{StaticResource header_style}" VerticalTextAlignment="Center" Margin="10,0"/>
+                        <Label Text="{Binding LeadsCalledCount}"  Style="{StaticResource green_header_style}" 
+                               VerticalTextAlignment="Center"/>
+                    </StackLayout>
+                </StackLayout>
+                <syncfusion:SfListView ItemsSource="{Binding Calledlist}" VerticalOptions="StartAndExpand" 
+                                       IsScrollBarVisible="False" SelectionMode="None" AutoFitMode="Height" 
+                                       IsScrollingEnabled="False" LoadMoreOption="{Binding LoadMoreOption}" 
+                                       LoadMoreCommand="{Binding LoadMoreItemsCommand}">
+                    <syncfusion:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell >
+                                <Grid Padding="10,0" Margin="10,5" ColumnSpacing="0" RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="1"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <!--<ColumnDefinition Width="40"/>-->
+                                    </Grid.ColumnDefinitions>
+                                    <Label Style="{StaticResource lead_name_style}" Text="{Binding Name}"/>
+                                    <Label Grid.Row="1" Style="{DynamicResource mobile_number_style}" 
+                                       Text="{Binding MobileNumber, StringFormat='Mob:{0}'}" HorizontalTextAlignment="Start"/>
+                                    <Label Grid.Column="1" Style="{StaticResource lead_name_style}" 
+                                       Text="{Binding CurrentStatus}" TextColor="{Binding status_text_color}"
+                                       HorizontalTextAlignment="Center"/>
+                                    <Label Grid.Row="1" Grid.Column="1" Style="{StaticResource mobile_number_style}" 
+                                       Text="{Binding AlternateNo, StringFormat='Alt:{0}'}"
+                                       IsVisible="{Binding AlternateNo, Converter={StaticResource TextToBoolConverter}}"/>
+
+                                    <!--<CheckBox Color="{StaticResource admin_green_color}" Grid.Column="2" Grid.RowSpan="2"
+                                          VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>-->
+                                    <BoxView Color="{StaticResource admin_lightgray_color}" Grid.Row="2" Grid.ColumnSpan="2"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </syncfusion:SfListView.ItemTemplate>
+                </syncfusion:SfListView>
+                <BoxView Color="{StaticResource admin_lightgray_color}" HeightRequest="10"/>
+                <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource admin_white_color}" Padding="5">
+                    <Label Text="Leads Pending" Style="{StaticResource header_style}" VerticalOptions="CenterAndExpand" 
+                           HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" 
+                                 VerticalOptions="CenterAndExpand" Margin="10,0">
+                        <Label Text="Leads : " Style="{StaticResource header_style}" VerticalTextAlignment="Center" Margin="10,0"/>
+                        <Label Text="{Binding LeadsPendingCount}"  Style="{StaticResource green_header_style}" 
+                               VerticalTextAlignment="Center"/>
+                    </StackLayout>
+                </StackLayout>
+                <syncfusion:SfListView ItemsSource="{Binding Pendinglist}" Style="{StaticResource listview_style}" 
+                                       SelectionMode="None" AutoFitMode="Height" IsScrollingEnabled="True"
+                                       LoadMoreOption="{Binding LoadMorePendingOption}" VerticalOptions="StartAndExpand" 
+                                       LoadMoreCommand="{Binding LoadMorePendingItemsCommand}" IsScrollBarVisible="False">
+                    <syncfusion:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell >
+                                <Grid Padding="10,0" Margin="10,5" ColumnSpacing="0" RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="1"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Style="{StaticResource lead_name_style}" Text="{Binding Name}"/>
+                                    <Label Grid.Row="1" Style="{StaticResource mobile_number_style}" 
+                                       Text="{Binding MobileNumber, StringFormat='Mob:{0}'}" HorizontalTextAlignment="Start"/>
+                                    <BoxView Color="{StaticResource admin_lightgray_color}" Grid.Row="2"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </syncfusion:SfListView.ItemTemplate>
+                </syncfusion:SfListView>
+                <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                    <Frame HasShadow="False" CornerRadius="30" Padding="10,15" 
+                           BackgroundColor="Transparent" BorderColor="#2baae1" HorizontalOptions="CenterAndExpand" Margin="30,0">
+                        <Label Text="Downloads Lead Details        >" Padding="10,0" VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="CenterAndExpand" Style="{StaticResource green_label}"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding DownloadLeadCommand}"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

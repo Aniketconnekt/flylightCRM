@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CRM.SuperAdmin.View.Performance.UsersPage"
+              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             mc:Ignorable="d"
+             BackgroundColor="{StaticResource background_color}"
+             Title="Users">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="green_label" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#0CB1C7" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style x:Key="listview_style" TargetType="ListView">
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="SeparatorVisibility" Value="Default" />
+                <Setter Property="SeparatorColor" Value="#cccccc" />
+                <Setter Property="BackgroundColor" Value="#FFFFFF" />
+                <Setter Property="HasUnevenRows" Value="True" />
+                <Setter Property="VerticalScrollBarVisibility" Value="Never" />
+            </Style>
+            <Style x:Key="lead_name_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="Margin" Value="0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="mobile_number_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "16" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{StaticResource admin_gray_color}" />
+                <Setter Property="Margin" Value="0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid Padding="15,10" RowSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Text="{Binding UserName,StringFormat='ADMIN: {0}'}" TextColor="{StaticResource superadmin_lightskyblue_color}" 
+                   FontSize="18" FontAttributes="Bold" VerticalTextAlignment="Center"/>
+
+            <Frame HasShadow="False" CornerRadius="30" BorderColor="#0CB1C7" Padding="10" Margin="0"
+                   VerticalOptions="StartAndExpand" Grid.Row="1">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Download User Details" VerticalOptions="CenterAndExpand" 
+                           HorizontalOptions="CenterAndExpand" Style="{StaticResource green_label}" Padding="10,5"/>
+                    <Image Source="ic_right_blue" HeightRequest="20" WidthRequest="20"/>
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding DownloadUserDetailsCommand}" />
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <syncfusion:SfListView x:Name="listView" ItemsSource="{Binding UsersData}" Style="{StaticResource listview_style}" 
+                                   SelectionMode="Single" Grid.Row="2" AutoFitMode="Height" 
+                                   LoadMoreOption="{Binding LoadMoreOption}"
+                                   LoadMoreCommand="{Binding LoadMoreItemsCommand}">
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <Grid Margin="0,5" ColumnSpacing="5" RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Style="{StaticResource lead_name_style}" Text="{Binding UserName}"/>
+                                <Label Grid.Row="1" Style="{StaticResource mobile_number_style}" 
+                                       Text="{Binding MobileNumber}"/>
+                                <CheckBox Color="{StaticResource superadmin_lightskyblue_color}" Grid.Column="1" Grid.RowSpan="2"
+                                          VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

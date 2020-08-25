@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CRM.View.LeadAllottedDetail.LeadAllottedDetailPage"
+             xmlns:local="clr-namespace:CRM.CustomControls"
+             Title="LEADS ALLOTTED">
+    <ContentPage.Content>
+        <Grid RowSpacing="5" Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Text="Pick Campaign" Style="{StaticResource lbl_header_style}"/>
+            <local:CustomPicker Margin="-4,0,0,0" Grid.Row="1" x:Name="picker" Image="ic_dropdown" Title="Select Unit" 
+                                Style="{StaticResource picker_style}">
+                <Picker.Items>
+                    <x:String>CAMPAIGN</x:String>
+                </Picker.Items>
+            </local:CustomPicker>
+            <Grid Grid.Row="3" ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="Campaign   :" Style="{StaticResource lbl_header_style}"/>
+                <Label Grid.Column="1" Text="CRMTEST" Style="{StaticResource lbl_compaing_test_style}" />
+            </Grid>
+            <Grid Grid.Row="5" ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="60*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="Lead Allotted" Style="{StaticResource lbl_header_style}"/>
+                <Label Grid.Column="1" Text="Leads : 20/40" Style="{StaticResource lbl_header_style}"
+                       HorizontalTextAlignment="End"/>
+            </Grid>
+            <BoxView Grid.Row="6" BackgroundColor="#313BD3" />
+            <ListView Grid.Row="7"  x:Name="_list" ItemsSource="{Binding list}" Style="{StaticResource listview_style}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <Grid  Margin="0,5,0,5" ColumnSpacing="10" RowSpacing="-2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Style="{StaticResource lblStyle}"
+                                               Text="{Binding name}" Margin="0,5,0,5"/>
+                                <Label Grid.Row="1" Style="{StaticResource lblStyle}" 
+                                               Text="{Binding mobile_number}" Margin="0,5,0,5"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

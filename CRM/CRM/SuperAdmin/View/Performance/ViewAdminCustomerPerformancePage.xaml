@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CRM.SuperAdmin.View.Performance.ViewAdminCustomerPerformancePage"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:CRM.CustomControls"
+             BackgroundColor="{StaticResource background_color}"
+             Title="Admins/Customers">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="green_label" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#0CB1C7" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style x:Key="listview_style" TargetType="ListView">
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="SeparatorVisibility" Value="None" />
+                <Setter Property="SeparatorColor" Value="#cccccc" />
+                <Setter Property="BackgroundColor" Value="#FFFFFF" />
+                <Setter Property="HasUnevenRows" Value="True" />
+                <Setter Property="VerticalScrollBarVisibility" Value="Never" />
+            </Style>
+            <Style x:Key="lead_name_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#0CB1C7" />
+                <Setter Property="Margin" Value="0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="mobile_number_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{StaticResource admin_gray_color}" />
+                <Setter Property="Margin" Value="0,5" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid Padding="15" ColumnSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Frame HasShadow="False" CornerRadius="30" BorderColor="#0CB1C7" Padding="10" Margin="0"
+                   VerticalOptions="StartAndExpand">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Download Admin Details" VerticalOptions="CenterAndExpand" 
+                           HorizontalOptions="StartAndExpand" Style="{StaticResource green_label}" Padding="10,5"/>
+                    <Image Source="ic_right_blue" HeightRequest="20" WidthRequest="20" HorizontalOptions="EndAndExpand"
+                           VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding DownloadAdminDetailsCommand}" />
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <ListView x:Name="mainView" ItemsSource="{Binding AdminCustomerData}" Style="{StaticResource listview_style}" 
+                      ItemTapped="OnItemTapped" Grid.Row="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid x:Name="Item" Margin="0,5" RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="1"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.9*"/>
+                                    <ColumnDefinition Width="1.1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Style="{StaticResource lead_name_style}" Text="Name:" />
+                                <Label Grid.Column="1" Style="{StaticResource mobile_number_style}" Text="{Binding UserName}" />
+
+                                <Label Grid.Row="1" Style="{StaticResource lead_name_style}" 
+                                       Text="Mobile No.:" />
+                                <Label Grid.Row="1" Grid.Column="1"  Style="{StaticResource mobile_number_style}" 
+                                       Text="{Binding MobileNumber}" />
+
+                                <Label Grid.Row="2" Style="{StaticResource lead_name_style}" Text="Alternate number:" />
+                                <Label Grid.Row="2" Grid.Column="1"  Style="{StaticResource mobile_number_style}" 
+                                       Text="{Binding AlternateNo}" />
+
+                                <Label Grid.Row="3" Style="{StaticResource lead_name_style}" Text="Address:" />
+                                <Label Grid.Row="3" Grid.Column="1"  Style="{StaticResource mobile_number_style}" 
+                                       Text="{Binding Address}" />
+
+                                <Label Grid.Row="4" Style="{StaticResource lead_name_style}" Text="Email:" />
+                                <Label Style="{StaticResource mobile_number_style}" Text="{Binding Email}"
+                                       Grid.Row="4" Grid.Column="1"/>
+                                <!--<Grid Grid.Row="4" Grid.Column="1" ColumnSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Style="{StaticResource mobile_number_style}" Text="{Binding Email}"/>
+                                    <CheckBox Color="{StaticResource superadmin_lightskyblue_color}" Grid.Column="1"
+                                          VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                                </Grid>-->
+
+                                <BoxView Color="{StaticResource admin_lightgray_color}" Grid.Row="5" Grid.ColumnSpan="2"/>
+
+                                <Label Grid.Row="6" Grid.ColumnSpan="2" Style="{DynamicResource lead_name_style}" 
+                                       Text="VIEW MORE DETAILS" HorizontalTextAlignment="Center">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer BindingContext="{Binding Source={x:Reference mainView}, Path=BindingContext}"
+                                                              Command="{Binding MoreDetailsCommand}"
+                                                              CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

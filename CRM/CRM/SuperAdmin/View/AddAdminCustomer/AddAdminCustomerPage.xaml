@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CRM.SuperAdmin.View.AddAdminCustomer.AddAdminCustomerPage"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:CRM.CustomControls"
+             Title="Add Admin/Customer">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="label_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{StaticResource admin_gray_color}" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style x:Key="entry_style" TargetType="Entry">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="PlaceholderColor" Value="#A1A1A1" />
+                <Setter Property="TextColor" Value="#4C4C4C" />
+            </Style>
+            <Style x:Key="boxview_style" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="#A1A1A1" />
+                <Setter Property="Margin" Value="-15,0" />
+            </Style>
+            <Style x:Key="button" TargetType="Button">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CornerRadius">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Int32" Phone = "25" Tablet = "28" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="HeightRequest">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "50" Tablet = "55" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="BackgroundColor" Value="#2baae1" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="Padding" Value="50,0"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Padding="15,10" Spacing="0">
+            <ScrollView VerticalScrollBarVisibility="Never">
+                <Grid RowSpacing="0" ColumnSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="1"/>
+
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="1"/>
+
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="1"/>
+
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="1"/>
+
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="1"/>
+
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="1"/>
+
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="1"/>
+
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="1"/>
+
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="1"/>
+
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="1"/>
+
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="1"/>
+
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="1"/>
+
+                        <RowDefinition Height="35"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Text="Admin/Customer Name" Style="{StaticResource label_style}"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="45" />
+                        </Grid.ColumnDefinitions>
+                        <local:CustomEntry x:Name="txt_user_name" Text="{Binding UserName,Mode=TwoWay}"
+                                           Placeholder="Enter user name" Style="{StaticResource entry_style}"
+                                           Focused="txt_user_name_Focused" Unfocused="txt_user_name_Unfocused"
+                                           TextChanged="Txt_user_name_TextChanged" MaxLength="30"/>
+                        <Image Grid.Column="1" x:Name="user_name_active_image" Source="ic_menu_add_user_blue.png" IsVisible="False"
+                               Margin="6"/>
+                        <Image Grid.Column="1" x:Name="user_name_unactive_image" Source="ic_menu_inactive_add_user.png" IsVisible="True"
+                               Margin="6"/>
+                    </Grid>
+                    <BoxView Grid.Row="2" x:Name="user_name_separator" Style="{StaticResource boxview_style}"/>
+
+                    <Label Grid.Row="3" Text="Date of Birth" Style="{StaticResource label_style}"/>
+                    <Grid Grid.Row="4" RowSpacing="0">
+                        <Label Text="{Binding DOB,Mode=TwoWay}" VerticalTextAlignment="End"
+                               TextColor="#A1A1A1" FontSize="16">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Image Source="ic_dob.png" HorizontalOptions="EndAndExpand" Margin="5"/>
+                        <local:SfCustomDatePicker x:Name="date" ColumnHeaderHeight="40" HorizontalOptions="Center"
+                                              PickerHeight="400" PickerMode="Dialog" PickerWidth="300" 
+                                              SelectedItem="{Binding StartDate}" VerticalOptions="Center" />
+                    </Grid>
+                    <BoxView Grid.Row="5" x:Name="date_of_birth_separator" Style="{StaticResource boxview_style}"/>
+
+                    <Label Grid.Row="6" Text="Mobile Number" Style="{StaticResource label_style}"/>
+                    <Grid Grid.Row="7">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="45" />
+                        </Grid.ColumnDefinitions>
+                        <local:CustomEntry x:Name="txt_mobile_number" Text="{Binding MobileNumber,Mode=TwoWay}"
+                                           Placeholder="mobile number" Style="{StaticResource entry_style}" Keyboard="Numeric"
+                                           TextChanged="MobileNumber_TextChanged" MaxLength="10"
+                                           Focused="txt_mobile_number_Focused" Unfocused="txt_mobile_number_Unfocused"/>
+                        <Image Grid.Column="1" x:Name="mobile_number_active_image" Source="ic_mobileactive.png" 
+                               IsVisible="False" Margin="6"/>
+                        <Image Grid.Column="1" x:Name="mobile_number_unactive_image" Source="ic_mobile.png" 
+                               IsVisible="True" Margin="6"/>
+                    </Grid>
+                    <BoxView Grid.Row="8" x:Name="mobile_number_separator" Style="{StaticResource boxview_style}"/>
+
+                    <Label Grid.Row="9" Text="Alternate Number" Style="{StaticResource label_style}"/>
+                    <Grid Grid.Row="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="45" />
+                        </Grid.ColumnDefinitions>
+                        <local:CustomEntry x:Name="txt_alternate_number" Text="{Binding AlternateNo,Mode=TwoWay}"
+                                           Focused="txt_alternate_number_Focused" Unfocused="txt_alternate_number_Unfocused"
+                                           Style="{StaticResource entry_style}"  Placeholder="alternate number" Keyboard="Numeric"
+                                           TextChanged="MobileNumber_TextChanged" MaxLength="10"/>
+                        <Image Grid.Column="1" x:Name="alternate_number_active_image" Source="ic_mobileactive.png" 
+                               IsVisible="False" Margin="6"/>
+                        <Image Grid.Column="1" x:Name="alternate_number_unactive_image" Source="ic_mobile.png" 
+                               IsVisible="True" Margin="6"/>
+                    </Grid>
+                    <BoxView Grid.Row="11" x:Name="alternate_mobile_number_separator" Style="{StaticResource boxview_style}"/>
+
+                    <Label Grid.Row="12" Text="Company Name" Style="{StaticResource label_style}"/>
+                    <Grid Grid.Row="13">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="45" />
+                        </Grid.ColumnDefinitions>
+                        <local:CustomEntry x:Name="txt_company" Text="{Binding Company,Mode=TwoWay}"
+                                           Focused="txt_company_Focused" Unfocused="txt_company_Unfocused"
+                                           Style="{StaticResource entry_style}"  Placeholder="company"
+                                           TextChanged="Txt_user_name_TextChanged" MaxLength="30"/>
+                        <Image Grid.Column="1" x:Name="company_active_image" Source="ic_company_active.png" IsVisible="False" Margin="6"/>
+                        <Image Grid.Column="1" x:Name="company_unactive_image" Source="ic_company.png" IsVisible="True" Margin="6"/>
+                    </Grid>
+                    <BoxView Grid.Row="14"  x:Name="company_separator" Style="{StaticResource boxview_style}"/>
+
+                    <Label Grid.Row="15" Text="GST/Pan/Aadhaar Number" Style="{StaticResource label_style}"/>
+                    <Grid Grid.Row="16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="45" />
+                        </Grid.ColumnDefinitions>
+                        <local:CustomEntry x:Name="txt_gst" Text="{Binding GSTNo,Mode=TwoWay}" MaxLength="15"
+                                           Focused="txt_gst_Focused" Unfocused="txt_gst_Unfocused"
+                                           Style="{StaticResource entry_style}"  Placeholder="GST/Pan/Aadhaar"/>
+                        <Image Grid.Column="1" x:Name="gst_active_blue" Source="gst_active_blue.png" IsVisible="False" Margin="6"/>
+                        <Image Grid.Column="1" x:Name="gst_unactive_image" Source="gst_unactive_image.png" IsVisible="True" Margin="6"/>
+                    </Grid>
+                    <BoxView Grid.Row="17"  x:Name="gst_separator" Style="{StaticResource boxview_style}"/>
+
+                    <Label Grid.Row="18" Text="Address" Style="{StaticResource label_style}"/>
+                    <Grid Grid.Row="19">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="45" />
+                        </Grid.ColumnDefinitions>
+                        <local:CustomEntry x:Name="txt_address" Text="{Binding Address, Mode=TwoWay}" 
+                                           Focused="txt_address_Focused" Unfocused="txt_address_Unfocused"
+                                           Style="{StaticResource entry_style}"  Placeholder="address" />
+                        <Image Grid.Column="1" x:Name="address_active_image" Source="ic_address_active.png" 
+                               IsVisible="False" Margin="6"/>
+                        <Image Grid.Column="1" x:Name="address_unactive_image" Source="ic_address.png" 
+                               IsVisible="True" Margin="6"/>
+                    </Grid>
+                    <BoxView Grid.Row="20" x:Name="address_separator" Style="{StaticResource boxview_style}"/>
+
+                    <Label Grid.Row="21" Text="City" Style="{StaticResource label_style}"/>
+                    <Grid Grid.Row="22">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="45" />
+                        </Grid.ColumnDefinitions>
+                        <local:CustomEntry x:Name="txt_city" Text="{Binding CityName,Mode=TwoWay}"
+                                           Focused="txt_city_Focused" Unfocused="txt_city_Unfocused"
+                                           Style="{StaticResource entry_style}"  Placeholder="city" 
+                                           TextChanged="Txt_user_name_TextChanged" MaxLength="30"/>
+                        <Image Grid.Column="1" x:Name="city_active_image" Source="ic_company_active.png" 
+                               IsVisible="False" Margin="6"/>
+                        <Image Grid.Column="1" x:Name="city_unactive_image" Source="ic_company.png" 
+                               IsVisible="True" Margin="6"/>
+                    </Grid>
+                    <BoxView Grid.Row="23" x:Name="city_separator" Style="{StaticResource boxview_style}"/>
+
+                    <Label Grid.Row="24" Text="District" Style="{StaticResource label_style}"/>
+                    <Grid Grid.Row="25">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="45" />
+                        </Grid.ColumnDefinitions>
+                        <local:CustomEntry Text="{Binding District,Mode=TwoWay}" x:Name="txt_district"  
+                                           Focused="txt_district_Focused" Unfocused="txt_district_Unfocused"
+                                           Style="{StaticResource entry_style}" Placeholder="district"
+                                           TextChanged="Txt_user_name_TextChanged" MaxLength="30"/>
+                        <Image Grid.Column="1" x:Name="district_active_image" Source="ic_disctrict_active.png" 
+                               IsVisible="False" Margin="6"/>
+                        <Image Grid.Column="1" x:Name="district_unactive_image" Source="ic_disctrict.png" 
+                               IsVisible="True" Margin="6"/>
+                    </Grid>
+                    <BoxView Grid.Row="26" x:Name="district_separator" Style="{StaticResource boxview_style}"/>
+
+                    <Label Grid.Row="27" Text="State" Style="{StaticResource label_style}"/>
+                    <local:CustomPicker TitleColor="#A1A1A1" Image="ic_dropdown" Title="Select State" 
+                                        TextColor="{StaticResource admin_green_color}" Grid.Row="28"
+                                        ItemsSource="{Binding StateCollection}" SelectedItem="{Binding StateName,Mode=TwoWay}"
+                                        ItemDisplayBinding="{Binding Statename}">
+                        <Picker.FontSize>
+                            <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                        </Picker.FontSize>
+                    </local:CustomPicker>
+                    <BoxView Grid.Row="29" x:Name="state_separator" Style="{StaticResource boxview_style}"/>
+
+                    <Label Grid.Row="30" Text="Email" Style="{StaticResource label_style}"/>
+                    <Grid Grid.Row="31">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="45" />
+                        </Grid.ColumnDefinitions>
+                        <local:CustomEntry x:Name="txt_email" Text="{Binding Email,Mode=TwoWay}"
+                                           Focused="txt_email_Focused" Unfocused="txt_email_Unfocused" Keyboard="Email"
+                                           Style="{StaticResource entry_style}"  Placeholder="@email" />
+                        <Image Grid.Column="1" x:Name="email_active_image" Source="ic_email_active.png" 
+                               IsVisible="False" Margin="6"/>
+                        <Image Grid.Column="1" x:Name="email_unactive_image" Source="ic_email.png" 
+                               IsVisible="True" Margin="6"/>
+                    </Grid>
+                    <BoxView Grid.Row="32" x:Name="email_separator" Style="{StaticResource boxview_style}"/>
+
+                    <Label Grid.Row="33" Text="Password" Style="{StaticResource label_style}"/>
+                    <Grid Grid.Row="34">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="45" />
+                        </Grid.ColumnDefinitions>
+                        <local:CustomEntry x:Name="txt_password" Placeholder="password" IsPassword="True"
+                                           Focused="txt_password_Focused" Unfocused="txt_password_Unfocused"
+                                           Style="{StaticResource entry_style}" Text="{Binding Password,Mode=TwoWay}"/>
+                        <Image Grid.Column="1" x:Name="password_active_image" Source="ic_lockactive.png" 
+                               IsVisible="False" Margin="6"/>
+                        <Image Grid.Column="1" x:Name="password_unactive_image" Source="ic_lock.png" 
+                               IsVisible="True" Margin="6"/>
+                    </Grid>
+                    <BoxView Grid.Row="35" x:Name="password_separator" Style="{StaticResource boxview_style}"/>
+                </Grid>
+            </ScrollView>
+            <Button Text="{Binding BtnText}" Style="{StaticResource button}" 
+                    Command="{Binding SaveAdminCustomerCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

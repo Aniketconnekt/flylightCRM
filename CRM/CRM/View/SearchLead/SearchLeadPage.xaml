@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CRM.View.SearchLead.SearchLeadPage"
+             xmlns:local="clr-namespace:CRM.CustomControls"
+             BackgroundColor="{StaticResource background_color}"
+             Title="Search Leads">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="header_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="Margin" Value="0,5,0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="entry_style" TargetType="Entry">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="PlaceholderColor" Value="#a1a1a1" />
+                <Setter Property="TextColor" Value="#2baae1" />
+            </Style>
+            <Style x:Key="button" TargetType="Button">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CornerRadius">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Int32" Phone = "25" Tablet = "28" />
+                    </Setter.Value>
+                </Setter>
+                <!--<Setter Property="CornerRadius" Value="25" />-->
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="BackgroundColor" Value="#2baae1" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <OnIdiom x:DataType="GridLength" Phone="50"  Tablet="55" />
+                    </RowDefinition.Height>
+                </RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid RowSpacing="0" ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition>
+                        <RowDefinition.Height>
+                            <OnIdiom x:DataType="GridLength" Phone="50"  Tablet="55" />
+                        </RowDefinition.Height>
+                    </RowDefinition>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition>
+                        <RowDefinition.Height>
+                            <OnIdiom x:DataType="GridLength" Phone="50"  Tablet="55" />
+                        </RowDefinition.Height>
+                    </RowDefinition>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition>
+                        <RowDefinition.Height>
+                            <OnIdiom x:DataType="GridLength" Phone="50"  Tablet="55" />
+                        </RowDefinition.Height>
+                    </RowDefinition>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition>
+                        <RowDefinition.Height>
+                            <OnIdiom x:DataType="GridLength" Phone="50"  Tablet="55" />
+                        </RowDefinition.Height>
+                    </RowDefinition>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Label Text="Search By Campaign" Style="{StaticResource header_style}"/>
+                <Frame Grid.Row="1" HasShadow="False" CornerRadius="30" Padding="22,6" BorderColor="#2baae1" >
+                    <local:CustomPicker TitleColor="#2baae1" TextColor="#2baae1" x:Name="picker" Image="ic_dropdown" 
+                                        Title="Select Campaign" ItemsSource="{Binding CampaignList}"
+                                        SelectedItem="{Binding SelectedCampaign}" ItemDisplayBinding="{Binding Name}">
+                        <Picker.FontSize>
+                            <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                        </Picker.FontSize>
+                    </local:CustomPicker>
+                </Frame>
+
+                <Label Grid.Row="2" Text="Search By Status" Style="{StaticResource header_style}"/>
+                <Frame Grid.Row="3" HasShadow="False" CornerRadius="30" Padding="22,6" BorderColor="#2baae1" >
+                    <local:CustomPicker TitleColor="#2baae1" TextColor="#2baae1" Image="ic_dropdown" 
+                                        Title="Select Status" ItemsSource="{Binding StatusList}"
+                                        SelectedItem="{Binding SelectedStatus}" ItemDisplayBinding="{Binding ActionName}">
+                        <Picker.FontSize>
+                            <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                        </Picker.FontSize>
+                    </local:CustomPicker>
+                </Frame>
+
+                <Label Grid.Row="4" Text="Search By Lead Name" Style="{StaticResource header_style}"/>
+                <Frame Grid.Row="5" x:Name="name_frame" HasShadow="False" CornerRadius="30" Padding="22,0" BorderColor="#a1a1a1" >
+                    <local:CustomEntry x:Name="txtName" Style="{StaticResource entry_style}" 
+                                       Placeholder="Enter Lead Name" Focused="txtName_Focused"
+                                       Unfocused="txtName_Unfocused" Text="{Binding LeadName}"/>
+                </Frame>
+
+                <Label Grid.Row="6" Text="Search By Mobile Number" Style="{StaticResource header_style}"/>
+                <Frame Grid.Row="7" x:Name="mobile_frame" HasShadow="False" CornerRadius="30" Padding="22,6"
+                       BorderColor="#a1a1a1" >
+                    <local:CustomEntry x:Name="txtMobileNumber" Style="{StaticResource entry_style}" MaxLength="10"
+                                       Placeholder="Enter Lead Mobile Number" Focused="txtMobileNumber_Focused"
+                                       Unfocused="txtMobileNumber_Unfocused" Keyboard="Numeric"
+                                       TextChanged="MobileNumber_TextChanged" Text="{Binding MobileNumber}"/>
+                </Frame>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="22*"  Tablet="30*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="56*"  Tablet="40*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:DataType="GridLength" Phone="22*"  Tablet="30*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" x:Name="btnSearch" Text="Search" Style="{StaticResource button}"
+                        Command="{Binding SearchCommand}"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+    
+</ContentPage>

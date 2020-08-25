@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Leads Called"
+             x:Class="CRM.View.Admin.Lead.LeadsCalledAddLead"
+             BackgroundColor="White">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="green_label" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "18" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#2baae1" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+            </Style>
+            <Style x:Key="green_header_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{StaticResource admin_green_color}" />
+                <Setter Property="Margin" Value="0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="header_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Margin" Value="0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="bold_header_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "18" Tablet = "22" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{StaticResource admin_gray_color}" />
+                <Setter Property="Margin" Value="0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="label_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="Margin" Value="4,5,0,5" />
+            </Style>
+            <Style x:Key="entry_style" TargetType="Entry">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="PlaceholderColor" Value="#a1a1a1" />
+                <Setter Property="TextColor" Value="#4c4c4c" />
+            </Style>
+            <Style x:Key="boxview_style" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="#a1a1a1" />
+                <Setter Property="Margin" Value="-15,0,-15,0" />
+            </Style>
+            <Style x:Key="button" TargetType="Button">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "16" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CornerRadius">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Int32" Phone = "25" Tablet = "30" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="BackgroundColor" Value="{StaticResource admin_green_color}" />
+                <Setter Property="TextColor" Value="{StaticResource admin_white_color}"/>
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="mobile_number_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "16" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{StaticResource admin_gray_color}" />
+                <Setter Property="Margin" Value="0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="lead_name_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{StaticResource admin_gray_color}" />
+                <Setter Property="Margin" Value="0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="green_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "20" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#2baae1" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <StackLayout Padding="0,10" Spacing="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="1 DAY" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" 
+                           Style="{DynamicResource header_style}" TextColor="{Binding Day1Color}" Padding="15,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Day1Command}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Grid.Column="1" Text="7 DAYS" VerticalOptions="CenterAndExpand" 
+                           HorizontalOptions="CenterAndExpand" Style="{DynamicResource header_style}" Padding="15,0"
+                           TextColor="{Binding Day7Color}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Day7Command}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Grid.Column="2" Text="30 DAYS" VerticalOptions="CenterAndExpand" 
+                           HorizontalOptions="CenterAndExpand" Style="{DynamicResource header_style}" Padding="15,0"
+                           TextColor="{Binding Day30Color}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Day30Command}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+                <StackLayout BackgroundColor="{StaticResource admin_lightgray_color}" Spacing="0">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" Spacing="0" Margin="10">
+                        <Label Text="User Name: " Style="{StaticResource bold_header_style}" VerticalOptions="CenterAndExpand" 
+                           HorizontalOptions="StartAndExpand" Margin="20,0,0,0">
+                        </Label>
+                        <Label Text="{Binding UserName}" Style="{DynamicResource header_style}" HorizontalTextAlignment="Start" 
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="5,0,0,0"
+                           FontAttributes="None">
+                        </Label>
+                    </StackLayout>
+
+                    <Button Text="ADD NEW LEAD" HorizontalOptions="EndAndExpand" Style="{StaticResource button}" 
+                            Padding="10,0" TextColor="{StaticResource admin_white_color}" 
+                            Command="{Binding AddNewLeadCommand}" Margin="10,5"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource admin_white_color}" Padding="5">
+                    <Label Text="Leads Called" Style="{StaticResource header_style}" VerticalOptions="CenterAndExpand" 
+                           HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand"
+                                 VerticalOptions="CenterAndExpand" Margin="10,0">
+                        <Label Text="Leads : " Style="{StaticResource header_style}" VerticalTextAlignment="Center" Margin="10,0"/>
+                        <Label Text="{Binding LeadsCalledCount}"  Style="{StaticResource green_header_style}" 
+                               VerticalTextAlignment="Center"/>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout BindableLayout.ItemsSource="{Binding Calledlist}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="15,0" Margin="10,5" ColumnSpacing="10" RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="1"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Style="{StaticResource lead_name_style}" Text="{Binding Name}"/>
+                                <Label Grid.Row="1" Style="{StaticResource mobile_number_style}" Text="{Binding MobileNumber}"/>
+                                <Label Grid.Column="1" Grid.RowSpan="2" Style="{StaticResource lead_name_style}" 
+                                           Text="{Binding CurrentStatus}" TextColor="{Binding status_text_color}"
+                                           HorizontalTextAlignment="End"/>
+                                <CheckBox Color="{StaticResource admin_green_color}" Grid.Column="2" Grid.RowSpan="2"
+                                          VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                                          BindingContext="{Binding .}" CheckedChanged="Calledlist_CheckedChanged"/>
+                                <BoxView Color="{StaticResource admin_lightgray_color}" Grid.Row="2" Grid.ColumnSpan="3"/>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+                <BoxView Color="{StaticResource admin_lightgray_color}" HeightRequest="10"/>
+                <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource admin_white_color}" Padding="5">
+                    <Label Text="Leads Pending" Style="{StaticResource header_style}" VerticalOptions="CenterAndExpand" 
+                           HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" 
+                                 VerticalOptions="CenterAndExpand" Margin="10,0">
+                        <Label Text="Leads : " Style="{StaticResource header_style}" VerticalTextAlignment="Center" Margin="10,0"/>
+                        <Label Text="{Binding LeadsPendingCount}"  Style="{StaticResource green_header_style}" 
+                               VerticalTextAlignment="Center"/>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout BindableLayout.ItemsSource="{Binding Pendinglist}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="15,0" Margin="10,5" ColumnSpacing="10" RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="1"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Style="{StaticResource lead_name_style}" Text="{Binding Name}"/>
+                                <Label Grid.Row="1" Style="{StaticResource mobile_number_style}" Text="{Binding MobileNumber}"/>
+                                <CheckBox Color="{StaticResource admin_green_color}" Grid.Column="1" Grid.RowSpan="2"
+                                          VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                                          BindingContext="{Binding .}" CheckedChanged="Pendinglist_CheckedChanged"/>
+                                <BoxView Color="{StaticResource admin_lightgray_color}" Grid.Row="2" Grid.ColumnSpan="2"/>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+                <StackLayout BackgroundColor="{StaticResource admin_lightgray_color}" Padding="0,10" 
+                             VerticalOptions="EndAndExpand" IsVisible="{Binding IsTransferLeadsVisible}">
+                    <Frame HasShadow="False" CornerRadius="30" BorderColor="#2baae1" HorizontalOptions="EndAndExpand"
+                       Padding="10" Margin="20,0">
+                        <Label Text="Transfer Leads >" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" 
+                           Style="{StaticResource green_label}" Padding="15,10"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding TransferLeadsCommand}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

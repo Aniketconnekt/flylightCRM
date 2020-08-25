@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Dashboard"
+             BackgroundColor="{StaticResource admin_lightgray_color}"
+             x:Class="CRM.View.Admin.Lead.Lead">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="green_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "18" Tablet = "22" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#2baae1" />
+            </Style>
+            <Style x:Key="gray_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "22" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4C4C4C" />
+            </Style>
+            <Style x:Key="bold_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "22" Tablet = "28" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="white_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "24" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" 
+                  RowSpacing="0" ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <BoxView Color="{StaticResource admin_green_color}"/>
+                <StackLayout Padding="15,0,15,15" Grid.RowSpan="2" VerticalOptions="StartAndExpand">
+                    <Frame CornerRadius="30" HasShadow="True" Padding="23,0,-5,0" Margin="0,5,0,0" HeightRequest="50">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding FollowUpCommand}"/>
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="60"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Follow UP" HorizontalTextAlignment="Start" FontAttributes="Bold"
+                                   VerticalTextAlignment="Center" Style="{StaticResource gray_text_style}"/>
+                            <Label Text="{Binding LeadData.FollowUp}" Style="{StaticResource bold_text_style}" Grid.Column="1"
+                                   TextColor="{StaticResource admin_gray_color}" VerticalOptions="CenterAndExpand" 
+                                   HorizontalOptions="CenterAndExpand"/>
+                            <Image Grid.Column="2" Source="ic_next"/>
+                        </Grid>
+                    </Frame>
+                    <Grid RowSpacing="10" ColumnSpacing="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame HasShadow="False" CornerRadius="10" BackgroundColor="White">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding UserLeadsCallDetailsCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout Spacing="0">
+                                <Label Text="{Binding LeadData.TotalLeads}" Style="{StaticResource bold_text_style}" TextColor="#33BFCF"
+                                       VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="TOTAL LEADS" Style="{StaticResource gray_text_style}" 
+                                       VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </Frame>
+                        <Frame HasShadow="False" CornerRadius="10" Grid.Column="1" BackgroundColor="White">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding LeadsByStatusCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout Spacing="0">
+                                <Label Text="{Binding LeadData.ActionTaken}" Style="{StaticResource bold_text_style}" TextColor="#FFA873" 
+                                       VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="ACTION TAKEN" Style="{StaticResource gray_text_style}" 
+                                       VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </Frame>
+                        <Frame HasShadow="False" CornerRadius="10" Grid.Row="1" BackgroundColor="White">
+                            <StackLayout Spacing="0">
+                                <Label Text="{Binding LeadData.Success}" Style="{StaticResource bold_text_style}" TextColor="#2baae1" 
+                                       VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="SUCCESS" Style="{StaticResource gray_text_style}" 
+                                       VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </Frame>
+                        <Frame HasShadow="False" CornerRadius="10" Grid.Row="1" Grid.Column="1" BackgroundColor="White">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ViewUsersCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout Spacing="0">
+                                <Label Text="{Binding LeadData.TotalUsers}" Style="{StaticResource bold_text_style}" 
+                                       TextColor="#FFA873" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="TOTAL USERS" Style="{StaticResource gray_text_style}" 
+                                       VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+                <StackLayout x:Name="mainView" BindableLayout.ItemsSource="{Binding CampaignData}" 
+                             BackgroundColor="White" Padding="20,20,20,0" Grid.Row="2">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="0" x:Name="Item">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="6*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Campaign" FontAttributes="Bold" VerticalOptions="CenterAndExpand" FontSize="16" 
+                                       HorizontalOptions="StartAndExpand" TextColor="{StaticResource admin_gray_color}"/>
+                                <Label Grid.Column="1" Text="{Binding Campaign}" VerticalOptions="CenterAndExpand" 
+                                       HorizontalOptions="EndAndExpand" TextColor="{StaticResource admin_gray_color}" FontSize="16"/>
+                                <Label Grid.Row="1" Text="Total Leads" FontAttributes="Bold" VerticalOptions="CenterAndExpand" FontSize="16" 
+                                       HorizontalOptions="StartAndExpand" TextColor="{StaticResource admin_gray_color}"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding TotalLeads}" VerticalOptions="CenterAndExpand" 
+                                       HorizontalOptions="EndAndExpand" TextColor="{StaticResource admin_gray_color}" FontSize="16"/>
+                                <Label Grid.Row="2" Text="Visited Leads" FontAttributes="Bold" VerticalOptions="CenterAndExpand" FontSize="16" 
+                                       HorizontalOptions="StartAndExpand" TextColor="{StaticResource admin_gray_color}"/>
+                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding VisitedLeads}" VerticalOptions="CenterAndExpand"
+                                       HorizontalOptions="EndAndExpand" TextColor="{StaticResource admin_gray_color}" FontSize="16"/>
+                                <Label Grid.Row="3" Text="Pending Leads" FontAttributes="Bold" VerticalOptions="CenterAndExpand" FontSize="16" 
+                                       HorizontalOptions="StartAndExpand" TextColor="{StaticResource admin_gray_color}"/>
+                                <Label Grid.Row="3" Grid.Column="1" Text="{Binding PendingLeads}" VerticalOptions="CenterAndExpand" 
+                                       HorizontalOptions="EndAndExpand" TextColor="{StaticResource admin_gray_color}" FontSize="16"/>
+                                <StackLayout Grid.Row="4" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" 
+                                             Spacing="0" BackgroundColor="{StaticResource admin_green_color}">
+                                    <Label Text="VIEW" TextColor="{StaticResource admin_white_color}" VerticalOptions="EndAndExpand" 
+                                           HorizontalOptions="CenterAndExpand" FontSize="16" FontAttributes="Bold" Padding="0,5">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer BindingContext="{Binding Source={x:Reference mainView}, Path=BindingContext}"
+                                                                  Command="{Binding ViewUsersCommand}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </StackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+                <Frame HasShadow="False" CornerRadius="20" Margin="0,10,15,10" Padding="10" 
+                       HorizontalOptions="EndAndExpand" BackgroundColor="#2baae1" Grid.Row="3">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ViewMoreCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Label Text="+ VIEW MORE" Style="{StaticResource white_text_style}" VerticalOptions="CenterAndExpand" 
+                               HorizontalOptions="CenterAndExpand" FontSize="16" FontAttributes="Bold"/>
+                </Frame>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

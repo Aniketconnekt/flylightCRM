@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CRM.View.Performance.PerformancePage"
+             xmlns:local="clr-namespace:CRM.CustomControls"
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             Title="Performance">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="header_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#4c4c4c" />
+                <Setter Property="Margin" Value="0,5,0,5" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="blue_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="End" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "30" Tablet = "45" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#fff" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="gray_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Start" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "15" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#fff" />
+            </Style>
+
+            <Style x:Key="view_text_style" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="End" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "15" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="#fff" />
+            </Style>
+
+            <Style x:Key="imag_style" TargetType="Image">
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="Margin">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="Thickness" Phone = "9" Tablet = "8" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="button" TargetType="Button">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="HeightRequest">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "50" Tablet = "55" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CornerRadius">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments ="x:Int32" Phone = "25" Tablet = "28" />
+                    </Setter.Value>
+                </Setter>
+                <!--<Setter Property="CornerRadius" Value="25" />-->
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="BackgroundColor" Value="#2baae1" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <Grid RowSpacing="0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition>
+                        <RowDefinition.Height>
+                            <OnIdiom x:DataType="GridLength" Phone="50"  Tablet="55" />
+                        </RowDefinition.Height>
+                    </RowDefinition>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="15"/>
+                </Grid.RowDefinitions>
+                <Label Text="Pick Campaign" Style="{StaticResource header_style}" Padding="15,0"/>
+                <Frame Grid.Row="1" HasShadow="False" CornerRadius="30" Padding="22,0" 
+                   BorderColor="#2baae1" Margin="15,0">
+                    <local:CustomPicker TitleColor="#2baae1" TextColor="#2baae1" x:Name="picker" Image="ic_dropdown" 
+                                    Title="Select Campaign" ItemsSource="{Binding CampaignList}"
+                                    SelectedItem="{Binding SelectedCampaign}" ItemDisplayBinding="{Binding Name}">
+                        <Picker.FontSize>
+                            <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                        </Picker.FontSize>
+                    </local:CustomPicker>
+                </Frame>
+                <Grid Grid.Row="3" VerticalOptions="EndAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition>
+                            <ColumnDefinition.Width>
+                                <OnIdiom x:DataType="GridLength" Phone="22*"  Tablet="30*" />
+                            </ColumnDefinition.Width>
+                        </ColumnDefinition>
+                        <ColumnDefinition>
+                            <ColumnDefinition.Width>
+                                <OnIdiom x:DataType="GridLength" Phone="56*"  Tablet="40*" />
+                            </ColumnDefinition.Width>
+                        </ColumnDefinition>
+                        <ColumnDefinition>
+                            <ColumnDefinition.Width>
+                                <OnIdiom x:DataType="GridLength" Phone="22*"  Tablet="30*" />
+                            </ColumnDefinition.Width>
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="1" Text="Search" Style="{StaticResource button}"
+                        Command="{Binding SearchCommand}"/>
+                </Grid>
+                <Grid Grid.Row="4" ColumnSpacing="20" Padding="15,0" IsVisible="{Binding IsAnotherPartVisible}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Campaign :" Style="{StaticResource header_style}" TextColor="{StaticResource theme_color}"/>
+                    <Label Grid.Column="1" Text="{Binding SelectedCampaign.Name}" Style="{StaticResource header_style}"/>
+                </Grid>
+                <Grid Grid.Row="5" IsVisible="{Binding IsAnotherPartVisible}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition>
+                            <RowDefinition.Height>
+                                <OnIdiom x:DataType="GridLength" Phone="220"  Tablet="280" />
+                            </RowDefinition.Height>
+                        </RowDefinition>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Padding="18,0" ColumnSpacing="18" RowSpacing="18">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Frame CornerRadius="10" HasShadow="True" Padding="0" BackgroundColor="#33becf">
+                            <Grid RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="65*"/>
+                                    <RowDefinition Height="35*"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <Label Text="{Binding PerformanceData.TotalLeads}" Style="{StaticResource blue_text_style}"/>
+                                <Label Grid.Row="1" Text="LEADS ALLOTTED" Style="{StaticResource gray_text_style}"/>
+                                <Grid Grid.Row="2" BackgroundColor="#fff" ColumnSpacing="-4">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="VIEW" TextColor="#33becf" Style="{StaticResource view_text_style}"/>
+                                    <Image Grid.Column="1" Source="ic_allotted_view_arrow" Style="{StaticResource imag_style}"/>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding LeadsAllottedCommand}" />
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                        <Frame CornerRadius="10" Grid.Column="1" HasShadow="True" Padding="0" 
+                           BackgroundColor="#ffa973">
+                            <Grid RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="65*"/>
+                                    <RowDefinition Height="35*"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <Label Text="{Binding PerformanceData.LeadsCalled}" Style="{StaticResource blue_text_style}"/>
+                                <Label Grid.Row="1" Text="LEADS CALLED" Style="{StaticResource gray_text_style}"/>
+                                <Grid Grid.Row="2" BackgroundColor="#fff" ColumnSpacing="-4">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="VIEW" TextColor="#FFA973" Style="{StaticResource view_text_style}"/>
+                                    <Image Grid.Column="1" Source="ic_called_view_arrow" Style="{StaticResource imag_style}"/>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding LeadsCalledCommand}" />
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                        <Frame CornerRadius="10" Grid.Row="1" Grid.Column="0" HasShadow="True" Padding="0" 
+                           BackgroundColor="#ff5c61">
+                            <Grid RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="65*"/>
+                                    <RowDefinition Height="35*"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <Label Text="{Binding PerformanceData.Leadspending}" Style="{StaticResource blue_text_style}"/>
+                                <Label Grid.Row="1" Text="LEADS PENDING" Style="{StaticResource gray_text_style}"/>
+                                <Grid Grid.Row="2" BackgroundColor="#fff" ColumnSpacing="-4">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="VIEW" TextColor="#ff5c61" Style="{StaticResource view_text_style}"/>
+                                    <Image Grid.Column="1" Source="ic_pending_view_arrow" Style="{StaticResource imag_style}"/>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding LeadsPendingCommand}"/>
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                        <Frame CornerRadius="10" HasShadow="True" Padding="0" BackgroundColor="#18d55e"
+                               Grid.Row="1" Grid.Column="1">
+                            <Grid RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="65*"/>
+                                    <RowDefinition Height="35*"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <Label Text="{Binding PerformanceData.LeadsUnCalled}" Style="{StaticResource blue_text_style}"/>
+                                <Label Grid.Row="1" Text="LEADS UNCALLED" Style="{StaticResource gray_text_style}"/>
+                                <Grid Grid.Row="2" BackgroundColor="#fff" ColumnSpacing="-4">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="VIEW" TextColor="#33becf" Style="{StaticResource view_text_style}"/>
+                                    <Image Grid.Column="1" Source="ic_allotted_view_arrow" Style="{StaticResource imag_style}"/>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding LeadsUnCalledCommand}" />
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+
+                    <Grid Padding="20,5" RowSpacing="0" ColumnSpacing="0" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="2"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <BoxView Color="Black" Grid.RowSpan="2"/>
+
+                        <forms:ChartView x:Name="ChartView" HeightRequest="200" VerticalOptions="EndAndExpand" 
+                                         Grid.Column="1" BackgroundColor="{StaticResource admin_lightgray_color}"
+                                         Margin="0,0,0,-20"/>
+
+                        <BoxView Color="Black" Grid.ColumnSpan="2" Grid.Row="1" VerticalOptions="StartAndExpand"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="6" BackgroundColor="White"/>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
