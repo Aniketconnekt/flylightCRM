@@ -21,7 +21,7 @@ namespace CRM.ViewModel
     {
         protected bool SetProperty<T>(
           ref T backingStore, T value,
-          [CallerMemberName]string propertyName = "",
+          [CallerMemberName] string propertyName = "",
           Action onChanged = null)
         {
 

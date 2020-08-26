@@ -121,7 +121,7 @@ namespace CRM.ViewModel
                             HideLoading();
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                await Application.Current.MainPage.DisplayAlert("Alert", "Please enter valid mobile number and password", "Ok");
+                                await Application.Current.MainPage.DisplayAlert("Alert", response.Message, "Ok");
                             });
                         }
                         else
