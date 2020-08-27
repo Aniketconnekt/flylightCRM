@@ -74,7 +74,7 @@
                     <RowDefinition Height="65*"/>
                 </Grid.RowDefinitions>
                 <Image Source="background" Aspect="AspectFill" Grid.RowSpan="2"/>
-                <Grid>
+                <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition >
                             <RowDefinition.Height>
@@ -92,8 +92,8 @@
                             </RowDefinition.Height>
                         </RowDefinition>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="1" Text="Welcome Back!" Style="{StaticResource lbl_header}"/>
-                    <Label Grid.Row="2" Text="Log in to your existing account of FlylightCRM" Style="{StaticResource lbl_second_header}"/>
+                    <Label Grid.Row="1" Text="Welcome Back!" Style="{StaticResource lbl_header}" />
+                    <Label Grid.Row="2" Text="Log in to your existing account of FlylightCRM" Style="{StaticResource lbl_second_header}"  />
                 </Grid>
                 <Grid Grid.Row="1" Padding="50,0" RowSpacing="20">
                     <Grid.RowDefinitions>
@@ -115,7 +115,7 @@
                         </RowDefinition>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <Frame ClassId="FrmMobile" x:Name="mobile_frame" HasShadow="False" CornerRadius="30" BorderColor="#a1a1a1">
+                    <Frame ClassId="FrmMobile" x:Name="mobile_frame" HasShadow="False" CornerRadius="28" BorderColor="#a1a1a1">
                         <Frame.Padding>
                             <OnIdiom x:TypeArguments="Thickness" Tablet="22,0,15,0" Phone="18,0,0,0" />
                         </Frame.Padding>
@@ -132,7 +132,7 @@
                         </Grid>
                     </Frame>
 
-                    <Frame Grid.Row="1" ClassId="FrmPassword" x:Name="password_frame" HasShadow="False" CornerRadius="30" BorderColor="#a1a1a1" >
+                    <Frame Grid.Row="1" ClassId="FrmPassword" x:Name="password_frame" HasShadow="False" CornerRadius="28" BorderColor="#a1a1a1" >
                         <Frame.Padding>
                             <OnIdiom x:TypeArguments="Thickness" Tablet="22,0,15,0" Phone="18,0,0,0" />
                         </Frame.Padding>
@@ -186,7 +186,7 @@
                             </ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
-                        <Frame Grid.Column="1" HasShadow="False" CornerRadius="30" Padding="22,0" BackgroundColor="#2baae1">
+                        <Frame Grid.Column="1" HasShadow="False" CornerRadius="26" Padding="22,0" BackgroundColor="#2baae1">
                             <Label Text="LOG IN" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
                                    Style="{StaticResource green_label}"/>
                             <Frame.GestureRecognizers>
@@ -200,8 +200,8 @@
                             </Label.GestureRecognizers>
                         </Label>
                         <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
-                            <Label Text="Don't have an account?" TextColor="#000000" FontSize="14"  VerticalTextAlignment="Center"/>
-                            <Label Text="SIGN UP" TextColor="#000033" FontSize="16" VerticalTextAlignment="Center">
+                            <Label Text="Don't have an account?" TextColor="#000000" FontSize="14"  VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" />
+                            <Label Text="SIGN UP" TextColor="#000033" FontSize="16" VerticalTextAlignment="Center" >
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding SignUpCommand}"/>
                                 </Label.GestureRecognizers>
