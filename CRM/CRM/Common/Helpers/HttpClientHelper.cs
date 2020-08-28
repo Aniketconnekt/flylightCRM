@@ -79,5 +79,35 @@ namespace CRM.Common.Helpers
                 }
             }
         }
+
+        public async Task<string> PostAsync<T>(byte[] fileDataBytes, string fileName)
+        {
+            using (var client = new HttpClient())
+            {
+                try
+                {
+                    var endpoint = _endpoint;
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", _accesstoken);
+                    client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/vnd.ms-excel");
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("multipart/form-data"));
+                    using (var formData = new MultipartFormDataContent())
+                    {
+                        formData.Add(new ByteArrayContent(fileDataBytes), "ClientDocs", fileName);
+                        var response = await client.PostAsync(endpoint, formData);
+                        if (response.StatusCode == HttpStatusCode.OK)
+                            return "Success";
+                        else
+                            return "UnSuccessfull";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return ex.Message;
+                }
+            }
+        }
+
+
     }
 }

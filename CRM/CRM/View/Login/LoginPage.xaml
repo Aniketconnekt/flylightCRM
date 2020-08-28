@@ -158,7 +158,7 @@
                         <Label Grid.Column="1" Text="Remember me" TextColor="#a1a1a1" FontSize="14" VerticalTextAlignment="Center"/>
                     </Grid>
 
-                    <Grid Grid.Row="4" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="5">
+                    <Grid Grid.Row="4" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="10">
                         <Grid.RowDefinitions>
                             <RowDefinition>
                                 <RowDefinition.Height>

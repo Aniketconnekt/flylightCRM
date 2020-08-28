@@ -533,4 +533,19 @@
   <ItemGroup>
     <BundleResource Include="Resources\splash.mp4" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_transfer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_share_inactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_share.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_call_inactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_transfer_inactive.png" />
+  </ItemGroup>
 </Project>

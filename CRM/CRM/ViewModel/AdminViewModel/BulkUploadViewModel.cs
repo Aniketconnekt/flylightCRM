@@ -107,8 +107,8 @@ namespace CRM.ViewModel.AdminViewModel
                     var userId = Settings.CRM_UserId; //await SecureStorage.GetAsync(AppConstant.UserId);
                     var auth = SelectedCampaign.Id + "," + userId;
                     HttpClientHelper apicall = new HttpClientHelper(ApiUrls.LeadBulkUploadUrl, auth);
-                    var response = await apicall.Post<bool>(_fileDataBytes, _fileName);
-                    if (response)
+                    var response = await apicall.PostAsync<string>(_fileDataBytes, _fileName);
+                    if (response=="Success")
                     {
                         HideLoading();
                         await ShowAlert("Lead uploaded successfully.");
@@ -117,7 +117,7 @@ namespace CRM.ViewModel.AdminViewModel
                     else
                     {
                         HideLoading();
-                        await ShowAlert(AppConstant.SOMETHING_WRONG);
+                        await ShowAlert(response);
                     }
                 }
                 else

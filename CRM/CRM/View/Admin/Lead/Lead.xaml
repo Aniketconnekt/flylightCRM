@@ -63,7 +63,7 @@
                 </Grid.RowDefinitions>
                 <BoxView Color="{StaticResource admin_green_color}"/>
                 <StackLayout Padding="15,0,15,15" Grid.RowSpan="2" VerticalOptions="StartAndExpand">
-                    <Frame CornerRadius="30" HasShadow="True" Padding="23,0,-5,0" Margin="0,5,0,0" HeightRequest="50">
+                    <Frame CornerRadius="26" HasShadow="False" Padding="23,0,-5,0" Margin="0,5,0,0" HeightRequest="50" >
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding FollowUpCommand}"/>
                         </Frame.GestureRecognizers>

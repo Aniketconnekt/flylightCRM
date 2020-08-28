@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" 
              Title="Master Page"  
+             IconImageSource="hamburger.png"
              x:Class="CRM.View.Menu.MasterPage">
     <ContentPage.Resources>
         <ResourceDictionary>
