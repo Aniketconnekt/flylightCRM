@@ -3,6 +3,7 @@ using CRM.Interfaces;
 using CRM.Model;
 using Xamarin.Forms;
 
+
 namespace CRM
 {
     public partial class App : Application

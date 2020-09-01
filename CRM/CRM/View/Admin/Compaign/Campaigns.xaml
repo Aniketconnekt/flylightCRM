@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:effects="clr-namespace:CRM.CustomControls"
              mc:Ignorable="d"
              Title="Campaigns"
              BackgroundColor="{StaticResource admin_lightgray_color}"
@@ -196,10 +196,12 @@
             <!--<Button  x:Name="btnAddNewLeads" Text="ADD CAMPAIGN" Style="{StaticResource button}" Margin="10"
                          VerticalOptions="CenterAndExpand" Padding="20,0" Command="{Binding AddCampaignCommand}"/>-->
             <Frame HasShadow="False" CornerRadius="25" Padding="0" Margin="10"
-                   BorderColor="#0CB1C7" Grid.Row="1">
-                <SearchBar x:Name="searchBar" Placeholder="Search" CancelButtonColor="#0CB1C7"
+                   BorderColor="#0CB1C7" Grid.Row="1" >
+                <effects:CustomSearchBar x:Name="searchBar" Placeholder="Search" CancelButtonColor="#0CB1C7"
                                SearchCommand="{Binding CampaignSearch}" TextChanged="SearchBar_TextChanged"
-                               SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
+                               SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"  >
+                    
+                </effects:CustomSearchBar>
             </Frame>
             <ScrollView VerticalScrollBarVisibility="Never" Grid.Row="2">
                 <StackLayout BindableLayout.ItemsSource="{Binding CampaignData}" Margin="0,10,0,0" 

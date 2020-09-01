@@ -53,7 +53,7 @@
                         <ColumnDefinition Width="120"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Frame Margin="20" Padding="0" CornerRadius="50" BackgroundColor="#2799CC">
+                    <Frame Margin="20" Padding="0" CornerRadius="50" BackgroundColor="#2799CC" HasShadow="False">
                         <Image Source="ic_user"/>
                     </Frame>
                     <Label Grid.Column="1" Text="{Binding LoginUserName}" Style="{StaticResource lbluser_style}"/>

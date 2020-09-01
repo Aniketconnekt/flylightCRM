@@ -162,7 +162,7 @@
             </Grid.RowDefinitions>
 
             <Label Text="Select Campaign" Style="{StaticResource header_style}" Padding="15,0"/>
-            <Frame Grid.Row="1" HasShadow="False" CornerRadius="30" Padding="22,0" BorderColor="#2baae1" Margin="15,0">
+            <Frame Grid.Row="1" HasShadow="False" CornerRadius="26" Padding="22,0" BorderColor="#2baae1" Margin="15,0">
                 <local:CustomPicker TitleColor="{StaticResource admin_green_color}" TextColor="{StaticResource admin_green_color}" 
                                     Image="ic_dropdown" Title="SELECT CAMPAIGN" 
                                         ItemsSource="{Binding CampaignList}" SelectedItem="{Binding SelectedCampaign}"

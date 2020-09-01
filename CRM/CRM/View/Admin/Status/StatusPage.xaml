@@ -65,9 +65,9 @@
                             <Label Style="{StaticResource lead_name_style}" Text="Action Name:" />
                             <Label Grid.Column="1" Style="{StaticResource mobile_number_style}" Text="{Binding ActionName}" />
 
-                            <StackLayout Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalOptions="EndAndExpand"
+                            <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="StartAndExpand"
                                          Margin="0,5,0,0">
-                                <Frame HasShadow="False" BackgroundColor="{StaticResource theme_color}" Padding="5" Margin="0">
+                                <Frame HasShadow="False" BackgroundColor="{StaticResource theme_color}" Padding="2" Margin="0">
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer BindingContext="{Binding Source={x:Reference mainView}, Path=BindingContext}"
                                                                   Command="{Binding EditCommand}"
@@ -76,7 +76,7 @@
                                     <Label Text="EDIT" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" 
                                                TextColor="White" Padding="10,5" FontAttributes="Bold"/>
                                 </Frame>
-                                <Frame HasShadow="False" BackgroundColor="#A1A1A1" Padding="5" Margin="10,0,0,0">
+                                <Frame HasShadow="False" BackgroundColor="#A1A1A1" Padding="2" Margin="10,0,0,0">
                                         <Frame.GestureRecognizers>
                                             <TapGestureRecognizer BindingContext="{Binding Source={x:Reference mainView}, Path=BindingContext}"
                                                                   Command="{Binding DeleteCommand}"

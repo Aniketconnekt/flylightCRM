@@ -140,14 +140,23 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="0" />
                         </Grid.ColumnDefinitions>
-                        <local:CustomPicker x:Name="txt_select_compaign" Title="Select Campaign" TextColor="{StaticResource admin_green_color}"
+                        <Grid Grid.Column="0">
+                            <Grid.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="iOS" Value="5,0,0,0" />
+                                    <On Platform="Android, WinPhone, Windows" Value="0,0,0,0" />
+                                </OnPlatform>
+                            </Grid.Margin>
+                            <local:CustomPicker x:Name="txt_select_compaign" Title="Select Campaign" TextColor="{StaticResource admin_green_color}"
                                             TitleColor="{StaticResource admin_green_color}" Image="ic_dropdown"
                                             ItemsSource="{Binding CampaignList}" SelectedItem="{Binding SelectedCampaign}"
                                             ItemDisplayBinding="{Binding Campaign}">
-                            <Picker.FontSize>
-                                <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
-                            </Picker.FontSize>
-                        </local:CustomPicker>
+                                <Picker.FontSize>
+                                    <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                                </Picker.FontSize>
+                            </local:CustomPicker>
+                        </Grid>
+                        
                     </Grid>
                     <BoxView Grid.Row="3" x:Name="select_compaign_separator" Style="{StaticResource boxview_style}"/>
 
@@ -157,9 +166,17 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="45" />
                         </Grid.ColumnDefinitions>
-                        <local:CustomEntry x:Name="txt_lead_name" Text="{Binding Name,Mode=TwoWay}"
+                        <Grid Grid.Column="0">
+                            <Grid.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="iOS" Value="5,0,0,0" />
+                                    <On Platform="Android, WinPhone, Windows" Value="0,0,0,0" />
+                                </OnPlatform>
+                            </Grid.Margin>
+                            <local:CustomEntry x:Name="txt_lead_name" Text="{Binding Name,Mode=TwoWay}"
                                            Placeholder="Enter lead name" Style="{StaticResource entry_style}"
                                            TextChanged="Txt_user_name_TextChanged" MaxLength="30"/>
+                        </Grid>
                         <Image Grid.Column="1" x:Name="lead_name_active_image" Source="ic_menu_allotted_lead.png" IsVisible="False"
                                Margin="5"/>
                         <Image Grid.Column="1" x:Name="lead_name_unactive_image" Source="ic_contacts.png"
@@ -174,6 +191,12 @@
 
                     <Label Grid.Row="7" Text="Date of Birth" Style="{StaticResource label_style}"/>
                     <Grid Grid.Row="8" RowSpacing="0">
+                        <Grid.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="iOS" Value="5,0,0,0" />
+                                <On Platform="Android, WinPhone, Windows" Value="0,0,0,0" />
+                            </OnPlatform>
+                        </Grid.Margin>
                         <Label Text="{Binding DOB,Mode=TwoWay}" VerticalTextAlignment="End"
                                TextColor="#A1A1A1" FontSize="16">
                             <Label.GestureRecognizers>
@@ -194,10 +217,19 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="45" />
                         </Grid.ColumnDefinitions>
-                        <local:CustomEntry Text="{Binding Company,Mode=TwoWay}" x:Name="txt_company" Placeholder="company" 
+                        <Grid Grid.Column="0">
+                            <Grid.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="iOS" Value="5,0,0,0" />
+                                    <On Platform="Android, WinPhone, Windows" Value="0,0,0,0" />
+                                </OnPlatform>
+                            </Grid.Margin>
+                            <local:CustomEntry Text="{Binding Company,Mode=TwoWay}" x:Name="txt_company" Placeholder="company" 
                                            Focused="txt_company_Focused" Unfocused="txt_company_Unfocused"
                                            Style="{StaticResource entry_style}"
                                            TextChanged="Txt_user_name_TextChanged" MaxLength="30"/>
+                        </Grid>
+                       
                         <Image Grid.Column="1" x:Name="company_active_image" Source="ic_company_active.png" IsVisible="False" Margin="6"/>
                         <Image Grid.Column="1" x:Name="company_unactive_image" Source="ic_company.png" IsVisible="True" Margin="6"/>
                     </Grid>
@@ -209,9 +241,17 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="45" />
                         </Grid.ColumnDefinitions>
-                        <local:CustomEntry Text="{Binding GSTNO,Mode=TwoWay}" x:Name="txt_gst" Placeholder="GST/Pan/Aadhaar" 
+                        <Grid Grid.Column="0">
+                            <Grid.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="iOS" Value="5,0,0,0" />
+                                    <On Platform="Android, WinPhone, Windows" Value="0,0,0,0" />
+                                </OnPlatform>
+                            </Grid.Margin>
+                            <local:CustomEntry Text="{Binding GSTNO,Mode=TwoWay}" x:Name="txt_gst" Placeholder="GST/Pan/Aadhaar" 
                                            Focused="txt_gst_Focused" Unfocused="txt_gst_Unfocused"
                                            Style="{StaticResource entry_style}"/>
+                        </Grid>
                         <Image Grid.Column="1" x:Name="gst_active_blue" Source="gst_active_blue.png" IsVisible="False" Margin="6"/>
                         <Image Grid.Column="1" x:Name="gst_unactive_image" Source="gst_unactive_image.png" IsVisible="True" Margin="6"/>
                     </Grid>
@@ -223,10 +263,19 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="45" />
                         </Grid.ColumnDefinitions>
-                        <local:CustomEntry Text="{Binding MobileNumber,Mode=TwoWay}" x:Name="txt_mobile_number" 
+                        <Grid Grid.Column="0">
+                            <Grid.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="iOS" Value="5,0,0,0" />
+                                    <On Platform="Android, WinPhone, Windows" Value="0,0,0,0" />
+                                </OnPlatform>
+                            </Grid.Margin>
+                            <local:CustomEntry Text="{Binding MobileNumber,Mode=TwoWay}" x:Name="txt_mobile_number" 
                                            Placeholder="mobile number" TextChanged="MobileNumber_TextChanged"
                                            Focused="txt_mobile_number_Focused" Unfocused="txt_mobile_number_Unfocused"
                                            Style="{StaticResource entry_style}"/>
+                        </Grid>
+                        
                         <Image Grid.Column="1" x:Name="mobile_number_active_image" Source="ic_mobileactive.png" 
                                IsVisible="False" Margin="6"/>
                         <Image Grid.Column="1" x:Name="mobile_number_unactive_image" Source="ic_mobile.png" 
@@ -240,10 +289,18 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="45" />
                         </Grid.ColumnDefinitions>
-                        <local:CustomEntry x:Name="txt_alternate_number" Text="{Binding AlternateNo,Mode=TwoWay}"
+                        <Grid Grid.Column="0">
+                            <Grid.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="iOS" Value="5,0,0,0" />
+                                    <On Platform="Android, WinPhone, Windows" Value="0,0,0,0" />
+                                </OnPlatform>
+                            </Grid.Margin>
+                            <local:CustomEntry x:Name="txt_alternate_number" Text="{Binding AlternateNo,Mode=TwoWay}"
                                            Focused="txt_alternate_number_Focused" Unfocused="txt_alternate_number_Unfocused"
                                            Style="{StaticResource entry_style}"  Placeholder="alternate number" Keyboard="Numeric"
                                            TextChanged="MobileNumber_TextChanged"/>
+                        </Grid>
                         <Image Grid.Column="1" x:Name="alternate_number_active_image" Source="ic_mobileactive.png" 
                                IsVisible="False" Margin="6"/>
                         <Image Grid.Column="1" x:Name="alternate_number_unactive_image" Source="ic_mobile.png" 
@@ -257,9 +314,18 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="45" />
                         </Grid.ColumnDefinitions>
-                        <local:CustomEntry Text="{Binding Address,Mode=TwoWay}" x:Name="txt_address" Placeholder="address" 
+                        <Grid Grid.Column="0">
+                            <Grid.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="iOS" Value="5,0,0,0" />
+                                    <On Platform="Android, WinPhone, Windows" Value="0,0,0,0" />
+                                </OnPlatform>
+                            </Grid.Margin>
+                            <local:CustomEntry Text="{Binding Address,Mode=TwoWay}" x:Name="txt_address" Placeholder="address" 
                                            Focused="txt_address_Focused" Unfocused="txt_address_Unfocused"
                                            Style="{StaticResource entry_style}"/>
+                        </Grid>
+                        
                         <Image Grid.Column="1" x:Name="address_active_image" Source="ic_address_active.png" 
                                IsVisible="False" Margin="6"/>
                         <Image Grid.Column="1" x:Name="address_unactive_image" Source="ic_address.png" 
@@ -273,10 +339,18 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="45" />
                         </Grid.ColumnDefinitions>
-                        <local:CustomEntry Text="{Binding City,Mode=TwoWay}" x:Name="txt_city" Placeholder="city" 
+                        <Grid Grid.Column="0">
+                            <Grid.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="iOS" Value="5,0,0,0" />
+                                    <On Platform="Android, WinPhone, Windows" Value="0,0,0,0" />
+                                </OnPlatform>
+                            </Grid.Margin>
+                            <local:CustomEntry Text="{Binding City,Mode=TwoWay}" x:Name="txt_city" Placeholder="city" 
                                            Focused="txt_city_Focused" Unfocused="txt_city_Unfocused"
                                            Style="{StaticResource entry_style}"
                                            TextChanged="Txt_user_name_TextChanged" MaxLength="30"/>
+                        </Grid>
                         <Image Grid.Column="1" x:Name="city_active_image" Source="ic_company_active.png" 
                                IsVisible="False" Margin="6"/>
                         <Image Grid.Column="1" x:Name="city_unactive_image" Source="ic_company.png" 
@@ -290,10 +364,18 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="45" />
                         </Grid.ColumnDefinitions>
-                        <local:CustomEntry Text="{Binding District,Mode=TwoWay}" x:Name="txt_district" Placeholder="district" 
+                        <Grid Grid.Column="0">
+                            <Grid.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="iOS" Value="5,0,0,0" />
+                                    <On Platform="Android, WinPhone, Windows" Value="0,0,0,0" />
+                                </OnPlatform>
+                            </Grid.Margin>
+                            <local:CustomEntry Text="{Binding District,Mode=TwoWay}" x:Name="txt_district" Placeholder="district" 
                                            Focused="txt_district_Focused" Unfocused="txt_district_Unfocused"
                                            Style="{StaticResource entry_style}"
                                            TextChanged="Txt_user_name_TextChanged" MaxLength="30"/>
+                        </Grid>
                         <Image Grid.Column="1" x:Name="district_active_image" Source="ic_disctrict_active.png" 
                                IsVisible="False" Margin="6"/>
                         <Image Grid.Column="1" x:Name="district_unactive_image" Source="ic_disctrict.png" 
@@ -302,14 +384,23 @@
                     <BoxView Grid.Row="30" x:Name="district_separator" Style="{StaticResource boxview_style}"/>
 
                     <Label Grid.Row="31" Text="State" Style="{StaticResource label_style}"/>
-                    <local:CustomPicker TitleColor="#A1A1A1" Image="ic_dropdown" Title="Select State" 
-                                        TextColor="{StaticResource admin_green_color}" Grid.Row="32"
+                    <Grid Grid.Row="32">
+                        <Grid.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="iOS" Value="5,0,0,0" />
+                                <On Platform="Android, WinPhone, Windows" Value="0,0,0,0" />
+                            </OnPlatform>
+                        </Grid.Margin>
+                        <local:CustomPicker TitleColor="#A1A1A1" Image="ic_dropdown" Title="Select State" 
+                                        TextColor="{StaticResource admin_green_color}" 
                                         ItemsSource="{Binding StateCollection}" SelectedItem="{Binding State,Mode=TwoWay}"
                                         ItemDisplayBinding="{Binding Statename}">
-                        <Picker.FontSize>
-                            <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
-                        </Picker.FontSize>
-                    </local:CustomPicker>
+                            <Picker.FontSize>
+                                <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                            </Picker.FontSize>
+                        </local:CustomPicker>
+                    </Grid>
+                    
                     <BoxView Grid.Row="33" x:Name="state_separator" Style="{StaticResource boxview_style}"/>
 
                     <Label Grid.Row="34" Text="Email" Style="{StaticResource label_style}"/>
@@ -318,9 +409,17 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="45" />
                         </Grid.ColumnDefinitions>
-                        <local:CustomEntry Text="{Binding Email,Mode=TwoWay}" x:Name="txt_email" Placeholder="email" 
+                        <Grid Grid.Column="0">
+                            <Grid.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="iOS" Value="5,0,0,0" />
+                                    <On Platform="Android, WinPhone, Windows" Value="0,0,0,0" />
+                                </OnPlatform>
+                            </Grid.Margin>
+                            <local:CustomEntry Text="{Binding Email,Mode=TwoWay}" x:Name="txt_email" Placeholder="email" 
                                            Focused="txt_email_Focused" Unfocused="txt_email_Unfocused"
                                            Style="{StaticResource entry_style}"/>
+                        </Grid>
                         <Image Grid.Column="1" x:Name="email_active_image" Source="ic_email_active.png" 
                                IsVisible="False" Margin="6"/>
                         <Image Grid.Column="1" x:Name="email_unactive_image" Source="ic_email.png" 

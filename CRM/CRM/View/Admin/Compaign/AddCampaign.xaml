@@ -113,7 +113,7 @@
                 <RowDefinition Height="15"/>
             </Grid.RowDefinitions>
             <Label Text="Campaign Name" Style="{StaticResource header_style}" Padding="15,5"/>
-            <Frame Grid.Row="1" HasShadow="False" CornerRadius="30" Padding="22,0" BorderColor="#2baae1" Margin="15,0">
+            <Frame Grid.Row="1" HasShadow="False" CornerRadius="26" Padding="22,0" BorderColor="#2baae1" Margin="15,0">
                 <local:CustomEntry x:Name="txtCampaignName" Style="{StaticResource entry_style}" 
                                    Text="{Binding Name,Mode=TwoWay}" Placeholder="campaign name" 
                                    PlaceholderColor="{StaticResource admin_green_color}" TextColor="Black"/>
@@ -145,7 +145,7 @@
                 </local:CustomPicker>
             </Frame>-->
             <Label Grid.Row="2" Text="Campaign Description" Style="{StaticResource header_style}" Padding="15,0"/>
-            <Frame Grid.Row="3" HasShadow="False" CornerRadius="5" Padding="22,0" BorderColor="#2baae1" Margin="15,0">
+            <Frame Grid.Row="3" HasShadow="False" CornerRadius="5" Padding="5,3" BorderColor="#2baae1" Margin="15,0">
                 <local:CustomEditor Placeholder="campaign description" PlaceholderColor="{StaticResource admin_green_color}"
                                     Text="{Binding Description}"/>
             </Frame>

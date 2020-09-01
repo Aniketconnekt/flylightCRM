@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace CRM.View.ResetPassword
@@ -17,6 +18,8 @@ namespace CRM.View.ResetPassword
         public ResetPassword(string mobileno)
         {
             InitializeComponent();
+            // iOS Platform
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             BindingContext = _forgetPasswordViewModel = new ForgetPasswordViewModel(Navigation);
             _forgetPasswordViewModel.Initialize(mobileno);
         }

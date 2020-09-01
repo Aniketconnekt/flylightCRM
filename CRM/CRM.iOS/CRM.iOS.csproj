@@ -47,6 +47,7 @@
     <WarningLevel>4</WarningLevel>
     <MtouchLink>None</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
+    <CodesignKey>Apple Distribution: vikas pamnani (G3L2K9UTUK)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -71,10 +72,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARMv7, ARMv7s, ARM64</MtouchArch>
-    <CodesignKey>iPhone Distribution: vikas pamnani (G3L2K9UTUK)</CodesignKey>
+    <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignEntitlements>
     </CodesignEntitlements>
-    <CodesignProvision>FlylightCRM AppStore</CodesignProvision>
+    <CodesignProvision>VS: WildCard Development</CodesignProvision>
     <BuildIpa>true</BuildIpa>
     <MtouchSdkVersion>
     </MtouchSdkVersion>
@@ -93,6 +94,7 @@
     <Compile Include="Renders\CustomEntryRenderer.cs" />
     <Compile Include="Renders\CustomPickerRenderer.cs" />
     <Compile Include="Renders\CustomTimePickerRenderer.cs" />
+    <Compile Include="Renders\FixedSearchBarRenderer.cs" />
     <Compile Include="Renders\ViewController.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist">
@@ -547,5 +549,8 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_transfer_inactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_contacts.png" />
   </ItemGroup>
 </Project>
