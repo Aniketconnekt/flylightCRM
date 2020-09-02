@@ -31,8 +31,8 @@
     </MtouchSdkVersion>
     <CodesignEntitlements>
     </CodesignEntitlements>
-    <CodesignKey>iPhone Developer</CodesignKey>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <CodesignKey>Apple Distribution: vikas pamnani (G3L2K9UTUK)</CodesignKey>
+    <CodesignProvision>FlylightCRM Production</CodesignProvision>
     <CodesignExtraArgs />
     <CodesignResourceRules>
     </CodesignResourceRules>
@@ -58,12 +58,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>Apple Distribution: vikas pamnani (G3L2K9UTUK)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>None</MtouchLink>
     <MtouchInterpreter>-all</MtouchInterpreter>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <CodesignProvision>FlylightCRM Production</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -71,16 +71,16 @@
     <OutputPath>bin\iPhone\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <MtouchArch>ARMv7, ARMv7s, ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>iPhone Distribution: vikas pamnani (G3L2K9UTUK)</CodesignKey>
     <CodesignEntitlements>
     </CodesignEntitlements>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <CodesignProvision>FlylightCRM Prod</CodesignProvision>
     <BuildIpa>true</BuildIpa>
     <MtouchSdkVersion>
     </MtouchSdkVersion>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
