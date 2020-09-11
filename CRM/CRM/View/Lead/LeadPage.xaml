@@ -216,9 +216,12 @@
                                                Text="{Binding MobileNumber}"/>
                                 <Label Grid.Row="2" Style="{StaticResource mobile_number_style}" 
                                                Text="{Binding CampaignName}"/>
-                                <Label Grid.Column="1" Grid.RowSpan="2" Style="{StaticResource lead_name_style}" 
+                                <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource lead_name_style}" 
                                            Text="{Binding CurrentStatus}" TextColor="{Binding status_text_color}" 
-                                           HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                                           HorizontalTextAlignment="End" VerticalTextAlignment="Center"  />
+                                <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource lead_name_style}" 
+                                           Text="{Binding LeadFollowuptime}" TextColor="{Binding status_text_color}" 
+                                           HorizontalTextAlignment="End" VerticalTextAlignment="Center" />
 
                                 <Image Source="ic_call" HeightRequest="30" WidthRequest="30" VerticalOptions="CenterAndExpand"
                                        Grid.Column="2" Grid.RowSpan="2" HorizontalOptions="EndAndExpand">

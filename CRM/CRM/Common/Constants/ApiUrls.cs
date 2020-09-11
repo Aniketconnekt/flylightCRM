@@ -52,6 +52,7 @@
         public const string TransferAllLeadToAnotherUserUrl = Baseurl + "TransferAllLeadToAnotherUser?AdminId={0}&FromUserId={1}&ToUserId={2}";
         public const string GetLeadsListForAdminbyStatusIdUrl = Baseurl + "GetLeadsListForAdminbyStatusId?UserId={0}&StatusId={1}&lastrecordsid={2}";
         public const string SendMessageToLeadsUrl = Baseurl + "SendMessageToLeads?message={0}&Campid={1}";
+        public const string CheckForDownloadLeads = Baseurl + "CheckForDownloadLeads?AdminId={0}&Fromdate={1}&Todate={2}";
 
         //User APIs
         public const string GetDashboardDataUrl = Baseurl + "GetDashboardData?Userid={0}";

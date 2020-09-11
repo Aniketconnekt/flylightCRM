@@ -101,7 +101,7 @@ namespace CRM.ViewModel
                 var current = Connectivity.NetworkAccess;
                 if (current == NetworkAccess.Internet)
                 {
-                    HttpClientHelper apicall = new HttpClientHelper(String.Format(ApiUrls.GetUserByCampIdUrl, SelectedCampaign.Id), string.Empty);
+                    HttpClientHelper apicall = new HttpClientHelper(String.Format(ApiUrls.GetUserByCampIdUrl, SelectedCampaign.Id ), string.Empty);
                     var response = await apicall.Get<CampUsers>();
                     if (response != null && response.Result && response.List != null && response.Message.Equals("Success"))
                     {

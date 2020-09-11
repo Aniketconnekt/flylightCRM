@@ -249,12 +249,29 @@ namespace CRM.ViewModel
         }
         public async void ExecuteOnDownloadLead(object obj)
         {
+
             var toDate = DateTime.Now.ToString("MM-dd-yyyy");
             var fromDate = DateTime.Now.AddDays(-_count).ToString("MM-dd-yyyy");
-            Uri uri = new Uri(String.Format("http://flylight.connekt.in///api/Service/DownloadLeads?AdminId={0}&Fromdate={1}&Todate={2}", _userID, fromDate, toDate));
-            await Browser.OpenAsync(uri);
-            await Task.Delay(100);
-            await _navigation.PushAsync(new SuccessfullyDownloaded());
+            HttpClientHelper apicall = new HttpClientHelper(String.Format(ApiUrls.CheckForDownloadLeads, _userID,  fromDate, toDate), string.Empty);
+            var response = await apicall.Get<string>();
+            if (response == "Success")
+            {
+                
+                var todate = DateTime.Now.ToString("MM-dd-yyyy");
+                var fromdate = DateTime.Now.AddDays(-_count).ToString("MM-dd-yyyy");
+                Uri uri = new Uri(string.Format("http://flylight.connekt.in///api/service/downloadleads?adminid={0}&fromdate={1}&todate={2}", _userID, fromdate, todate));
+                await Browser.OpenAsync(uri);
+                await Task.Delay(100);
+                await _navigation.PushAsync(new SuccessfullyDownloaded());
+            }
+            else
+            {
+                HideLoading();
+                await ShowAlert("No Record found");
+            }
+
+
+
         }
         public void ExecuteOnAddNewLead(object obj)
         {

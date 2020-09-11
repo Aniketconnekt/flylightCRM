@@ -64,6 +64,7 @@ namespace CRM.Model
         public int ActionId { get; set; }
         public string Status { get; set; }
         public string Description { get; set; }
+        public string LeadFollowuptime { get; set; }
 
         private bool _isSelectAllChecked = false;
         public bool IsSelectAllChecked
